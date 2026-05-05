@@ -6,23 +6,19 @@ import {
     Button,
     Select,
     MenuItem,
-    FormControl,
-    Checkbox,
-    FormControlLabel
+    FormControl
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Share from '../share/share';
 
-const Register = () => {
+const MidwifeRegister = () => {
     const navigate = useNavigate();
+    const [regNumber, setRegNumber] = useState('');
     const [fullName, setFullName] = useState('');
     const [mohDivision, setMohDivision] = useState('');
     const [phone, setPhone] = useState('');
-    const [email, setEmail] = useState('');
-    const [lmpDate, setLmpDate] = useState('');
-    const [height, setHeight] = useState('');
-    const [weight, setWeight] = useState('');
-    const [hasDiabetes, setHasDiabetes] = useState(false);
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
     return (
         <Box
@@ -94,12 +90,28 @@ const Register = () => {
                                     fontWeight: 400
                                 }}
                             >
-                                Register as a new mother
+                                Register as a midwife
                             </Typography>
                         </Box>
 
                         {/* Form Details Section */}
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
+                            <Box>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Registration Number</Typography>
+                                <TextField
+                                    fullWidth
+                                    size="small"
+                                    value={regNumber}
+                                    onChange={(e) => setRegNumber(e.target.value)}
+                                    sx={{
+                                        '& .MuiOutlinedInput-root': {
+                                            borderRadius: '8px',
+                                            bgcolor: '#FFFFFF'
+                                        }
+                                    }}
+                                />
+                            </Box>
+
                             <Box>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Full Name</Typography>
                                 <TextField
@@ -146,74 +158,41 @@ const Register = () => {
                             </Box>
 
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Email</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Enter Password</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
-                                    type="email"
-                                    placeholder="Optional"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', bgcolor: '#FFFFFF' } }}
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    sx={{
+                                        '& .MuiOutlinedInput-root': {
+                                            borderRadius: '8px',
+                                            bgcolor: '#FFFFFF'
+                                        }
+                                    }}
                                 />
+                                <Typography sx={{ mt: 0.5, fontSize: '12px', color: '#666666' }}>
+                                    Use 8 characters with a mix of letters, numbers & symbols
+                                </Typography>
                             </Box>
 
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Last Menstrual Period (LMP) date</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Confirm Password</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
-                                    type="date"
-                                    value={lmpDate}
-                                    onChange={(e) => setLmpDate(e.target.value)}
-                                    sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', bgcolor: '#FFFFFF' } }}
-                                    InputLabelProps={{ shrink: true }}
+                                    type="password"
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    sx={{
+                                        '& .MuiOutlinedInput-root': {
+                                            borderRadius: '8px',
+                                            bgcolor: '#FFFFFF'
+                                        }
+                                    }}
                                 />
                             </Box>
-
-                            <Box sx={{ display: 'flex', gap: 2 }}>
-                                <Box sx={{ flex: 1 }}>
-                                    <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Current Height (cm)</Typography>
-                                    <TextField
-                                        fullWidth
-                                        size="small"
-                                        type="number"
-                                        value={height}
-                                        onChange={(e) => setHeight(e.target.value)}
-                                        sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', bgcolor: '#FFFFFF' } }}
-                                    />
-                                </Box>
-                                <Box sx={{ flex: 1 }}>
-                                    <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Current Weight (kg)</Typography>
-                                    <TextField
-                                        fullWidth
-                                        size="small"
-                                        type="number"
-                                        value={weight}
-                                        onChange={(e) => setWeight(e.target.value)}
-                                        sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', bgcolor: '#FFFFFF' } }}
-                                    />
-                                </Box>
-                            </Box>
-
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
-                                        checked={hasDiabetes}
-                                        onChange={(e) => setHasDiabetes(e.target.checked)}
-                                        sx={{
-                                            color: '#BDBDBD',
-                                            padding: '4px',
-                                            ml: 1,
-                                            '&.Mui-checked': {
-                                                color: '#3DC664',
-                                            },
-                                        }}
-                                    />
-                                }
-                                label={<Typography sx={{ fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Do you have diabetes?</Typography>}
-                                sx={{ ml: -1, mt: -0.5 }}
-                            />
                         </Box>
 
                         {/* Pagination & Next Button Section */}
@@ -221,37 +200,28 @@ const Register = () => {
                             sx={{
                                 display: 'flex',
                                 alignItems: 'center',
-                                justifyContent: 'flex-end',
-                                position: 'relative',
-                                mt: 1,
-                                ml:{xs:'70px',sm:"220px",md:"240px",lg:"30px"}
+                                justifyContent: 'space-between',
+                                mt: 1
                             }}
                         >
-                            {/* Green Progress Navigation - Positioned Left using absolute or matching space-between */}
-                            <Box sx={{ position: 'absolute', left: 0, display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                <Box sx={{ width: '32px', height: '8px', bgcolor: '#3DC664', borderRadius: '4px' }} />
-                                <Box sx={{ width: '8px', height: '8px', bgcolor: '#E0E0E0', borderRadius: '50%' }} />
-                            </Box>
-
                             <Button
                                 variant="contained"
-                                onClick={() => navigate('/register-next')}
+                                onClick={() => { }}
+                                fullWidth
                                 sx={{
-                                    width: '120px',
                                     height: '46px',
                                     borderRadius: '10px',
-                                    bgcolor: '#1A1A1A',
+                                    bgcolor: '#3DC664',
                                     color: '#FFFFFF',
                                     textTransform: 'none',
                                     fontSize: '16px',
                                     fontWeight: 500,
-                                    px: '10px',
                                     '&:hover': {
-                                        bgcolor: '#333333'
+                                        bgcolor: '#35b058'
                                     }
                                 }}
                             >
-                                Next
+                                Register
                             </Button>
                         </Box>
                     </Box>
@@ -261,4 +231,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default MidwifeRegister;

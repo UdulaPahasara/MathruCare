@@ -110,7 +110,8 @@ const RegisterNext = () => {
                                 alignItems: 'center',
                                 justifyContent: 'flex-end',
                                 position: 'relative',
-                                mt: 1
+                                mt: 1,
+                                ml:{xs:'70px',sm:"220px",md:"240px",lg:"100px"}
                             }}
                         >
                             {/* Green Progress Navigation - Positioned Left */}

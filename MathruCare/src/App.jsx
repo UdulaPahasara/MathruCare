@@ -6,6 +6,7 @@ import NewPassword from './componets/Login/NewPassword';
 import Share from './componets/Signup/share/share';
 import Register from './componets/Signup/Register/Register';
 import RegisterNext from './componets/Signup/Register/RegisterNext';
+import MidwifeRegister from './componets/Signup/Register/MidwifeRegister';
 import './App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/share" element={<Share />} />
         <Route path="/register" element={<Register />} />
         <Route path="/register-next" element={<RegisterNext />} />
+        <Route path="/midwife-register" element={<MidwifeRegister />} />
         <Route path="/" element={<Navigate to="/login" replace />} />
         {/* Add more routes here as needed */}
       </Routes>
