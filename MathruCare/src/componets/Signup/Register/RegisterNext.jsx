@@ -46,10 +46,10 @@ const RegisterNext = () => {
                         flexDirection: 'column',
                         justifyContent: 'center',
                         alignItems: { xs: 'center', lg: 'flex-start' },
-                        ml: { sm: '20px', md: '40px', lg: '150px' },
+                        ml: { sm: '20px', md: '40px', lg: '10px' },
                         mt: { xs: 4, sm: 0 },
                         pl: { lg: '192px' },
-                        pr: { sm: '20px', md: '40px', lg: '272px' },
+                        pr: { sm: '20px', md: '40px', lg: '100px' },
                         py: { xs: 4, sm: 6, lg: 0 },
                         px: { xs: 2, sm: 0 } // Mobile padding fallback
                     }}
@@ -57,7 +57,7 @@ const RegisterNext = () => {
                     <Box
                         sx={{
                             width: '100%',
-                            maxWidth: 462,
+                            maxWidth: { xs: 462, lg: 600 },
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '40px'
@@ -111,7 +111,7 @@ const RegisterNext = () => {
                                 justifyContent: 'flex-end',
                                 position: 'relative',
                                 mt: 1,
-                                ml:{xs:'70px',sm:"220px",md:"240px",lg:"100px"}
+                                ml: { xs: '70px', sm: "220px", md: "240px", lg: "100px" }
                             }}
                         >
                             {/* Green Progress Navigation - Positioned Left */}

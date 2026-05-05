@@ -53,10 +53,10 @@ const MidwifeRegister = () => {
                         flexDirection: 'column',
                         justifyContent: 'center',
                         alignItems: { xs: 'center', lg: 'flex-start' },
-                        ml: { sm: '1px', md: '40px', lg: '150px' },
+                        ml: { sm: '1px', md: '40px', lg: '10px' },
                         mt: { xs: 4, sm: 0, lg: '-190px' },
                         pl: { lg: '192px' },
-                        pr: { sm: '20px', md: '40px', lg: '272px' },
+                        pr: { sm: '20px', md: '40px', lg: '100px' },
                         py: { xs: 4, sm: 6, lg: 0 },
                         px: { xs: 2, sm: 0 } // Mobile padding fallback
                     }}
@@ -64,7 +64,7 @@ const MidwifeRegister = () => {
                     <Box
                         sx={{
                             width: '100%',
-                            maxWidth: 463,
+                            maxWidth: { xs: 463, lg: 600 },
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '40px'

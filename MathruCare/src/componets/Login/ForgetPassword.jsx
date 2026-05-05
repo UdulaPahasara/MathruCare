@@ -63,7 +63,7 @@ const ForgetPassword = () => {
                             fontWeight: 700,
                             color: '#1a1a1a',
                             fontSize: { xs: '24px', md: '36px', lg: '42px' },
-                            fontFamily: "'Outfit', sans-serif"
+                            fontFamily: "'Poppins', sans-serif"
                         }}
                     >
                         MathruCare
@@ -134,7 +134,7 @@ const ForgetPassword = () => {
                         mb: { xs: 2, md: 3 }
                     }}
                 >
-                    <Typography sx={{ fontWeight: 500, color: '#333', fontSize: { xs: '13px', md: '14px' } }}>
+                    <Typography sx={{ fontFamily: "'Poppins', sans-serif",fontWeight: 500, color: '#333', fontSize: { xs: '13px', md: '14px' } }}>
                         Enter your email address
                     </Typography>
                     <TextField
