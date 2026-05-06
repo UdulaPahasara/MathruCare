@@ -75,7 +75,7 @@ const Register = () => {
                         }}
                     >
                         {/* Header Section */}
-                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', ml: { lg: '-100px' } }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', ml: { lg: '-100px' }, textAlign: 'center' }}>
                             <Typography
                                 variant="h3"
                                 sx={{
@@ -100,7 +100,7 @@ const Register = () => {
 
                         {/* Form Details Section */}
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px', ml: { sm: '-11px', lg: '-120px' } }}>
-                            <Box>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Full Name</Typography>
                                 <TextField
                                     fullWidth
@@ -116,14 +116,17 @@ const Register = () => {
                                 />
                             </Box>
 
-                            <Box>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>MOH Division</Typography>
                                 <FormControl fullWidth size="small">
                                     <Select
                                         value={mohDivision}
                                         onChange={(e) => setMohDivision(e.target.value)}
                                         displayEmpty
-                                        sx={{ borderRadius: '8px', bgcolor: '#FFFFFF' }}
+                                        sx={{
+                                            borderRadius: '8px',
+                                            bgcolor: '#FFFFFF'
+                                        }}
                                     >
                                         <MenuItem value="" disabled>
                                             <span style={{ color: '#9CA3AF' }}>Select MOH Division</span>
@@ -134,18 +137,23 @@ const Register = () => {
                                 </FormControl>
                             </Box>
 
-                            <Box>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Phone Number</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
                                     value={phone}
                                     onChange={(e) => setPhone(e.target.value)}
-                                    sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', bgcolor: '#FFFFFF' } }}
+                                    sx={{
+                                        '& .MuiOutlinedInput-root': {
+                                            borderRadius: '8px',
+                                            bgcolor: '#FFFFFF'
+                                        }
+                                    }}
                                 />
                             </Box>
 
-                            <Box>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Email</Typography>
                                 <TextField
                                     fullWidth
@@ -154,11 +162,16 @@ const Register = () => {
                                     placeholder="Optional"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', bgcolor: '#FFFFFF' } }}
+                                    sx={{
+                                        '& .MuiOutlinedInput-root': {
+                                            borderRadius: '8px',
+                                            bgcolor: '#FFFFFF'
+                                        }
+                                    }}
                                 />
                             </Box>
 
-                            <Box>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Last Menstrual Period (LMP) date</Typography>
                                 <TextField
                                     fullWidth
@@ -166,12 +179,17 @@ const Register = () => {
                                     type="date"
                                     value={lmpDate}
                                     onChange={(e) => setLmpDate(e.target.value)}
-                                    sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', bgcolor: '#FFFFFF' } }}
+                                    sx={{
+                                        '& .MuiOutlinedInput-root': {
+                                            borderRadius: '8px',
+                                            bgcolor: '#FFFFFF'
+                                        }
+                                    }}
                                     InputLabelProps={{ shrink: true }}
                                 />
                             </Box>
 
-                            <Box sx={{ display: 'flex', gap: 2 }}>
+                            <Box sx={{ display: 'flex', gap: 2, maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Box sx={{ flex: 1 }}>
                                     <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Current Height (cm)</Typography>
                                     <TextField
@@ -180,7 +198,12 @@ const Register = () => {
                                         type="number"
                                         value={height}
                                         onChange={(e) => setHeight(e.target.value)}
-                                        sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', bgcolor: '#FFFFFF' } }}
+                                        sx={{
+                                            '& .MuiOutlinedInput-root': {
+                                                borderRadius: '8px',
+                                                bgcolor: '#FFFFFF'
+                                            }
+                                        }}
                                     />
                                 </Box>
                                 <Box sx={{ flex: 1 }}>
@@ -191,68 +214,79 @@ const Register = () => {
                                         type="number"
                                         value={weight}
                                         onChange={(e) => setWeight(e.target.value)}
-                                        sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', bgcolor: '#FFFFFF' } }}
+                                        sx={{
+                                            '& .MuiOutlinedInput-root': {
+                                                borderRadius: '8px',
+                                                bgcolor: '#FFFFFF'
+                                            }
+                                        }}
                                     />
                                 </Box>
                             </Box>
 
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
-                                        checked={hasDiabetes}
-                                        onChange={(e) => setHasDiabetes(e.target.checked)}
-                                        sx={{
-                                            color: '#BDBDBD',
-                                            padding: '4px',
-                                            ml: 1,
-                                            '&.Mui-checked': {
-                                                color: '#3DC664',
-                                            },
-                                        }}
-                                    />
-                                }
-                                label={<Typography sx={{ fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Do you have diabetes?</Typography>}
-                                sx={{ ml: -1, mt: -0.5 }}
-                            />
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox
+                                            checked={hasDiabetes}
+                                            onChange={(e) => setHasDiabetes(e.target.checked)}
+                                            sx={{
+                                                color: '#BDBDBD',
+                                                padding: '4px',
+                                                ml: 1,
+                                                '&.Mui-checked': {
+                                                    color: '#3DC664',
+                                                },
+                                            }}
+                                        />
+                                    }
+                                    label={<Typography sx={{ fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Do you have diabetes?</Typography>}
+                                    sx={{ ml: -1, mt: -0.5 }}
+                                />
+                            </Box>
                         </Box>
 
                         {/* Pagination & Next Button Section */}
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'flex-end',
-                                position: 'relative',
-                                mt: 1,
-                                ml: { xs: '70px', sm: "220px", md: "240px", lg: "30px" }
-                            }}
-                        >
-                            {/* Green Progress Navigation - Positioned Left using absolute or matching space-between */}
-                            <Box sx={{ position: 'absolute', left: 0, display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                <Box sx={{ width: '32px', height: '8px', bgcolor: '#3DC664', borderRadius: '4px' }} />
-                                <Box sx={{ width: '8px', height: '8px', bgcolor: '#E0E0E0', borderRadius: '50%' }} />
-                            </Box>
-
-                            <Button
-                                variant="contained"
-                                onClick={() => navigate('/register-next')}
+                        <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
+                            <Box
                                 sx={{
-                                    width: '120px',
-                                    height: '46px',
-                                    borderRadius: '10px',
-                                    bgcolor: '#1A1A1A',
-                                    color: '#FFFFFF',
-                                    textTransform: 'none',
-                                    fontSize: '16px',
-                                    fontWeight: 500,
-                                    px: '10px',
-                                    '&:hover': {
-                                        bgcolor: '#333333'
-                                    }
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'flex-end',
+                                    position: 'relative',
+                                    mt: 0,
+                                   ml: { xs: '110px', sm: "220px", md: "240px", lg: '170px' }
                                 }}
                             >
-                                Next
-                            </Button>
+                                {/* Green Progress Navigation - Positioned Left using absolute or matching space-between */}
+                                <Box sx={{ position: 'absolute', left: 0, display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                    <Box sx={{ width: '32px', height: '8px', bgcolor: '#3DC664', borderRadius: '4px', mt: { md: '-10px', lg: '-20px' } }} />
+                                    <Box sx={{ width: '8px', height: '8px', bgcolor: '#E0E0E0', borderRadius: '50%', mt: { md: '-10px', lg: '-20px' } }} />
+                                </Box>
+
+                                <Button
+                                    variant="contained"
+                                    onClick={() => navigate('/register-next')}
+                                    sx={{
+                                        width: '120px',
+                                        height: '46px',
+                                        borderRadius: '10px',
+                                        bgcolor: '#1A1A1A',
+                                        color: '#FFFFFF',
+                                        textTransform: 'none',
+                                        fontSize: '16px',
+                                        fontWeight: 500,
+                                        px: '10px',
+                                        mt: { md: '-20px', lg: '-30px' },
+                                        mr: { lg: '12px' },
+                                        '&:hover': {
+                                            bgcolor: '#333333'
+                                        }
+                                    }}
+                                >
+                                    Next
+                                </Button>
+                            </Box>
                         </Box>
                     </Box>
                 </Box>

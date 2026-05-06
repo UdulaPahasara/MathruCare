@@ -65,13 +65,13 @@ const AdminSignup = () => {
                         }}
                     >
                         {/* Header Section */}
-                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', ml: { lg: '-100px' } }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', ml: { lg: '-100px' }, textAlign: 'center' }}>
                             <Typography
                                 variant="h3"
                                 sx={{
                                     fontWeight: 600,
                                     fontSize: { xs: '28px', md: '36px' },
-                                    color: '#1A1A1A' // From design
+                                    color: '#1A1A1A' 
                                 }}
                             >
                                 Create an Account
@@ -90,7 +90,7 @@ const AdminSignup = () => {
 
                         {/* Form Details Section */}
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px', ml: { sm: '-11px', lg: '-120px' } }}>
-                            <Box>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Email Address</Typography>
                                 <TextField
                                     fullWidth
@@ -107,7 +107,7 @@ const AdminSignup = () => {
                                 />
                             </Box>
 
-                            <Box>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Enter Password</Typography>
                                 <TextField
                                     fullWidth
@@ -127,7 +127,7 @@ const AdminSignup = () => {
                                 </Typography>
                             </Box>
 
-                            <Box>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Confirm Password</Typography>
                                 <TextField
                                     fullWidth
@@ -144,27 +144,28 @@ const AdminSignup = () => {
                                 />
                             </Box>
 
-                            {/* Register Button - inside form box to match field width */}
-                            <Button
-                                variant="contained"
-                                onClick={() => { }}
-                                fullWidth
-                                sx={{
-                                    height: '46px',
-                                    borderRadius: '10px',
-                                    bgcolor: '#3DC664',
-                                    color: '#FFFFFF',
-                                    textTransform: 'none',
-                                    fontSize: '16px',
-                                    fontWeight: 500,
-                                    mt: 1,
-                                    '&:hover': {
-                                        bgcolor: '#35b058'
-                                    }
-                                }}
-                            >
-                                Register
-                            </Button>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
+                                <Button
+                                    variant="contained"
+                                    onClick={() => { }}
+                                    fullWidth
+                                    sx={{
+                                        height: '46px',
+                                        borderRadius: '10px',
+                                        bgcolor: '#3DC664',
+                                        color: '#FFFFFF',
+                                        textTransform: 'none',
+                                        fontSize: '16px',
+                                        fontWeight: 500,
+                                        mt: 1,
+                                        '&:hover': {
+                                            bgcolor: '#35b058'
+                                        }
+                                    }}
+                                >
+                                    Register
+                                </Button>
+                            </Box>
                         </Box>
 
                     </Box>

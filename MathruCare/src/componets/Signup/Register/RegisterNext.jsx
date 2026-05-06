@@ -65,7 +65,7 @@ const RegisterNext = () => {
                     >
                         {/* Form Details Section */}
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px', ml: { sm: '-11px', lg: '-120px' } }}>
-                            <Box>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Enter Password</Typography>
                                 <TextField
                                     fullWidth
@@ -85,7 +85,7 @@ const RegisterNext = () => {
                                 </Typography>
                             </Box>
 
-                            <Box>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Confirm Password</Typography>
                                 <TextField
                                     fullWidth
@@ -102,66 +102,72 @@ const RegisterNext = () => {
                                 />
                             </Box>
 
-                            {/* Register Button - inside form box to match field width */}
+
+                        </Box>
+
+                        {/* Navigation Row */}
+                        <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'flex-end',
+                                    position: 'relative',
+                                    mt: 1,
+                                    ml: { xs: '100px', sm: "220px", md: "240px", lg: '170px' }
+                                }}
+                            >
+                                {/* Green Progress Navigation - Positioned Left */}
+                                <Box sx={{ position: 'absolute', left: 0, display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                    <Box sx={{ width: '32px', height: '8px', bgcolor: '#3DC664', borderRadius: '4px' }} />
+                                    <Box sx={{ width: '8px', height: '8px', bgcolor: '#A5E0B5', borderRadius: '50%' }} />
+                                </Box>
+
+                                <Button
+                                    variant="outlined"
+                                    onClick={() => navigate('/register')}
+                                    sx={{
+                                        width: '120px',
+                                        height: '46px',
+                                        borderRadius: '10px',
+                                        borderColor: '#1A1A1A',
+                                        color: '#1A1A1A',
+                                        textTransform: 'none',
+                                        fontSize: '16px',
+                                        fontWeight: 500,
+                                        left: { lg: '-12px' },
+                                        px: '10px',
+                                        '&:hover': {
+                                            borderColor: '#333333',
+                                            bgcolor: 'rgba(0,0,0,0.02)'
+                                        }
+                                    }}
+                                >
+                                    Back
+                                </Button>
+                            </Box>
+                        </Box>
+
+                        <Box sx={{ maxWidth: { lg: '85%' }, mx: 'auto', width: '100%', mt: 2, }}>
                             <Button
                                 variant="contained"
                                 onClick={() => { }} // Hook up submission handler later
                                 fullWidth
                                 sx={{
-                                    height: '46px',
+                                    height: '56px',
                                     borderRadius: '10px',
                                     bgcolor: '#3DC664',
                                     color: '#FFFFFF',
                                     textTransform: 'none',
-                                    fontSize: '16px',
+                                    fontSize: '18px',
                                     fontWeight: 500,
-                                    mt: 1,
+                                    left: { lg: '-54px' },
                                     '&:hover': {
                                         bgcolor: '#35b058'
                                     }
                                 }}
                             >
                                 Register
-                            </Button>
-                        </Box>
-
-                        {/* Navigation Row */}
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'flex-end',
-                                position: 'relative',
-                                mt: 1,
-                                ml: { xs: '70px', sm: "220px", md: "240px", lg: "100px" }
-                            }}
-                        >
-                            {/* Green Progress Navigation - Positioned Left */}
-                            <Box sx={{ position: 'absolute', left: 0, display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                <Box sx={{ width: '32px', height: '8px', bgcolor: '#3DC664', borderRadius: '4px' }} />
-                                <Box sx={{ width: '8px', height: '8px', bgcolor: '#A5E0B5', borderRadius: '50%' }} />
-                            </Box>
-
-                            <Button
-                                variant="outlined"
-                                onClick={() => navigate('/register')}
-                                sx={{
-                                    width: '120px',
-                                    height: '46px',
-                                    borderRadius: '10px',
-                                    borderColor: '#1A1A1A',
-                                    color: '#1A1A1A',
-                                    textTransform: 'none',
-                                    fontSize: '16px',
-                                    fontWeight: 500,
-                                    px: '10px',
-                                    '&:hover': {
-                                        borderColor: '#333333',
-                                        bgcolor: 'rgba(0,0,0,0.02)'
-                                    }
-                                }}
-                            >
-                                Back
                             </Button>
                         </Box>
 

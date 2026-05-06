@@ -96,7 +96,7 @@ const MidwifeRegister = () => {
 
                         {/* Form Details Section */}
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px', ml: { sm: '-11px', lg: '-120px' } }}>
-                            <Box>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Registration Number</Typography>
                                 <TextField
                                     fullWidth
@@ -112,7 +112,7 @@ const MidwifeRegister = () => {
                                 />
                             </Box>
 
-                            <Box>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Full Name</Typography>
                                 <TextField
                                     fullWidth
@@ -128,14 +128,17 @@ const MidwifeRegister = () => {
                                 />
                             </Box>
 
-                            <Box>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>MOH Division</Typography>
                                 <FormControl fullWidth size="small">
                                     <Select
                                         value={mohDivision}
                                         onChange={(e) => setMohDivision(e.target.value)}
                                         displayEmpty
-                                        sx={{ borderRadius: '8px', bgcolor: '#FFFFFF' }}
+                                        sx={{
+                                            borderRadius: '8px',
+                                            bgcolor: '#FFFFFF'
+                                        }}
                                     >
                                         <MenuItem value="" disabled>
                                             <span style={{ color: '#9CA3AF' }}>Select MOH Division</span>
@@ -146,18 +149,23 @@ const MidwifeRegister = () => {
                                 </FormControl>
                             </Box>
 
-                            <Box>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Phone Number</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
                                     value={phone}
                                     onChange={(e) => setPhone(e.target.value)}
-                                    sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', bgcolor: '#FFFFFF' } }}
+                                    sx={{
+                                        '& .MuiOutlinedInput-root': {
+                                            borderRadius: '8px',
+                                            bgcolor: '#FFFFFF'
+                                        }
+                                    }}
                                 />
                             </Box>
 
-                            <Box>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Enter Password</Typography>
                                 <TextField
                                     fullWidth
@@ -177,7 +185,7 @@ const MidwifeRegister = () => {
                                 </Typography>
                             </Box>
 
-                            <Box>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Confirm Password</Typography>
                                 <TextField
                                     fullWidth
@@ -194,27 +202,28 @@ const MidwifeRegister = () => {
                                 />
                             </Box>
 
-                            {/* Register Button - inside form box to match field width */}
-                            <Button
-                                variant="contained"
-                                onClick={() => { }}
-                                fullWidth
-                                sx={{
-                                    height: '46px',
-                                    borderRadius: '10px',
-                                    bgcolor: '#3DC664',
-                                    color: '#FFFFFF',
-                                    textTransform: 'none',
-                                    fontSize: '16px',
-                                    fontWeight: 500,
-                                    mt: 1,
-                                    '&:hover': {
-                                        bgcolor: '#35b058'
-                                    }
-                                }}
-                            >
-                                Register
-                            </Button>
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
+                                <Button
+                                    variant="contained"
+                                    onClick={() => { }}
+                                    fullWidth
+                                    sx={{
+                                        height: '46px',
+                                        borderRadius: '10px',
+                                        bgcolor: '#3DC664',
+                                        color: '#FFFFFF',
+                                        textTransform: 'none',
+                                        fontSize: '16px',
+                                        fontWeight: 500,
+                                        mt: 1,
+                                        '&:hover': {
+                                            bgcolor: '#35b058'
+                                        }
+                                    }}
+                                >
+                                    Register
+                                </Button>
+                            </Box>
                         </Box>
 
                     </Box>
