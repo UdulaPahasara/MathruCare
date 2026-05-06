@@ -58,10 +58,10 @@ const Register = () => {
                         justifyContent: 'center',
                         alignItems: { xs: 'center', lg: 'flex-start' },
                         ml: { sm: '1px', md: '40px', lg: '10px' },
-                        mt: { xs: 4, sm: 0, lg: '-190px' },
+                        mt: { xs: 4, sm: 0 },
                         pl: { lg: '192px' },
                         pr: { sm: '20px', md: '40px', lg: '100px' },
-                        py: { xs: 4, sm: 6, lg: 0 },
+                        py: { xs: 4, sm: 3, lg: 0 },
                         px: { xs: 2, sm: 0 } // Mobile padding fallback
                     }}
                 >
@@ -71,11 +71,11 @@ const Register = () => {
                             maxWidth: { xs: 463, lg: 600 },
                             display: 'flex',
                             flexDirection: 'column',
-                            gap: '40px'
+                            gap: '20px'
                         }}
                     >
                         {/* Header Section */}
-                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', ml: { lg: '-100px' } }}>
                             <Typography
                                 variant="h3"
                                 sx={{
@@ -99,9 +99,9 @@ const Register = () => {
                         </Box>
 
                         {/* Form Details Section */}
-                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px', ml: { sm: '-11px', lg: '-120px' } }}>
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Full Name</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Full Name</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -117,7 +117,7 @@ const Register = () => {
                             </Box>
 
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>MOH Division</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>MOH Division</Typography>
                                 <FormControl fullWidth size="small">
                                     <Select
                                         value={mohDivision}
@@ -135,7 +135,7 @@ const Register = () => {
                             </Box>
 
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Phone Number</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Phone Number</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -146,7 +146,7 @@ const Register = () => {
                             </Box>
 
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Email</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Email</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -159,7 +159,7 @@ const Register = () => {
                             </Box>
 
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Last Menstrual Period (LMP) date</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Last Menstrual Period (LMP) date</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -173,7 +173,7 @@ const Register = () => {
 
                             <Box sx={{ display: 'flex', gap: 2 }}>
                                 <Box sx={{ flex: 1 }}>
-                                    <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Current Height (cm)</Typography>
+                                    <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Current Height (cm)</Typography>
                                     <TextField
                                         fullWidth
                                         size="small"
@@ -184,7 +184,7 @@ const Register = () => {
                                     />
                                 </Box>
                                 <Box sx={{ flex: 1 }}>
-                                    <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Current Weight (kg)</Typography>
+                                    <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Current Weight (kg)</Typography>
                                     <TextField
                                         fullWidth
                                         size="small"

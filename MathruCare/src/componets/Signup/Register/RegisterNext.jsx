@@ -46,11 +46,11 @@ const RegisterNext = () => {
                         flexDirection: 'column',
                         justifyContent: 'center',
                         alignItems: { xs: 'center', lg: 'flex-start' },
-                        ml: { sm: '20px', md: '40px', lg: '10px' },
+                        ml: { sm: '1px', md: '40px', lg: '10px' },
                         mt: { xs: 4, sm: 0 },
                         pl: { lg: '192px' },
                         pr: { sm: '20px', md: '40px', lg: '100px' },
-                        py: { xs: 4, sm: 6, lg: 0 },
+                        py: { xs: 4, sm: 3, lg: 0 },
                         px: { xs: 2, sm: 0 } // Mobile padding fallback
                     }}
                 >
@@ -60,13 +60,13 @@ const RegisterNext = () => {
                             maxWidth: { xs: 462, lg: 600 },
                             display: 'flex',
                             flexDirection: 'column',
-                            gap: '40px'
+                            gap: '20px'
                         }}
                     >
                         {/* Form Details Section */}
-                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px', ml: { sm: '-11px', lg: '-120px' } }}>
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Enter Password</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Enter Password</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -86,7 +86,7 @@ const RegisterNext = () => {
                             </Box>
 
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Confirm Password</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Confirm Password</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -101,6 +101,28 @@ const RegisterNext = () => {
                                     }}
                                 />
                             </Box>
+
+                            {/* Register Button - inside form box to match field width */}
+                            <Button
+                                variant="contained"
+                                onClick={() => { }} // Hook up submission handler later
+                                fullWidth
+                                sx={{
+                                    height: '46px',
+                                    borderRadius: '10px',
+                                    bgcolor: '#3DC664',
+                                    color: '#FFFFFF',
+                                    textTransform: 'none',
+                                    fontSize: '16px',
+                                    fontWeight: 500,
+                                    mt: 1,
+                                    '&:hover': {
+                                        bgcolor: '#35b058'
+                                    }
+                                }}
+                            >
+                                Register
+                            </Button>
                         </Box>
 
                         {/* Navigation Row */}
@@ -143,27 +165,6 @@ const RegisterNext = () => {
                             </Button>
                         </Box>
 
-                        {/* Register Button */}
-                        <Button
-                            variant="contained"
-                            onClick={() => { }} // Hook up submission handler later
-                            fullWidth
-                            sx={{
-                                height: '46px',
-                                borderRadius: '10px',
-                                bgcolor: '#3DC664',
-                                color: '#FFFFFF',
-                                textTransform: 'none',
-                                fontSize: '16px',
-                                fontWeight: 500,
-                                mt: -1,
-                                '&:hover': {
-                                    bgcolor: '#35b058'
-                                }
-                            }}
-                        >
-                            Register
-                        </Button>
                     </Box>
                 </Box>
             </Box>

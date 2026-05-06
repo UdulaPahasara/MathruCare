@@ -9,7 +9,7 @@ const Share = () => {
     return (
         <Box
             sx={{
-                height: { xs: '100vh', md: '100%', lg: '1024px', sm: '100%' },
+                height: '100%',
                 minHeight: '100vh',
                 width: '100%',
                 bgcolor: '#3DC664',
@@ -20,7 +20,8 @@ const Share = () => {
                 color: '#FFFFFF',
                 position: 'relative',
                 overflow: 'hidden',
-                pt: { xs: 8, md: 10 }
+                ml: { xs: 0,sm:'-20px', md: 0, lg: -3.8 },
+                pt: { xs: 4, md: 6, lg: 8 }
             }}
         >
             {/* Top Logo and Titles Section */}
@@ -108,7 +109,7 @@ const Share = () => {
                         maxWidth: 424,
                         height: 'auto',
                         maxHeight: 380,
-                        mb: 40,
+                        mb: 4,
                         objectFit: 'contain'
                     }}
                 />

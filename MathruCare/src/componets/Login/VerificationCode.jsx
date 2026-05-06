@@ -83,7 +83,7 @@ const VerificationCode = () => {
                             fontWeight: 700,
                             color: '#1a1a1a',
                             fontSize: { xs: '24px', md: '36px', lg: '42px' },
-                            fontFamily: "'Outfit', sans-serif"
+                            fontFamily: "'Poppins', sans-serif"
                         }}
                     >
                         MathruCare

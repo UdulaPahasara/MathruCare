@@ -54,10 +54,10 @@ const MidwifeRegister = () => {
                         justifyContent: 'center',
                         alignItems: { xs: 'center', lg: 'flex-start' },
                         ml: { sm: '1px', md: '40px', lg: '10px' },
-                        mt: { xs: 4, sm: 0, lg: '-190px' },
+                        mt: { xs: 4, sm: 0 },
                         pl: { lg: '192px' },
                         pr: { sm: '20px', md: '40px', lg: '100px' },
-                        py: { xs: 4, sm: 6, lg: 0 },
+                        py: { xs: 4, sm: 3, lg: 0 },
                         px: { xs: 2, sm: 0 } // Mobile padding fallback
                     }}
                 >
@@ -67,11 +67,11 @@ const MidwifeRegister = () => {
                             maxWidth: { xs: 463, lg: 600 },
                             display: 'flex',
                             flexDirection: 'column',
-                            gap: '40px'
+                            gap: '20px'
                         }}
                     >
                         {/* Header Section */}
-                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', ml: { lg: '-100px' } }}>
                             <Typography
                                 variant="h3"
                                 sx={{
@@ -95,9 +95,9 @@ const MidwifeRegister = () => {
                         </Box>
 
                         {/* Form Details Section */}
-                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px', ml: { sm: '-11px', lg: '-120px' } }}>
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Registration Number</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Registration Number</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -113,7 +113,7 @@ const MidwifeRegister = () => {
                             </Box>
 
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Full Name</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Full Name</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -129,7 +129,7 @@ const MidwifeRegister = () => {
                             </Box>
 
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>MOH Division</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>MOH Division</Typography>
                                 <FormControl fullWidth size="small">
                                     <Select
                                         value={mohDivision}
@@ -147,7 +147,7 @@ const MidwifeRegister = () => {
                             </Box>
 
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Phone Number</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Phone Number</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -158,7 +158,7 @@ const MidwifeRegister = () => {
                             </Box>
 
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Enter Password</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Enter Password</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -178,7 +178,7 @@ const MidwifeRegister = () => {
                             </Box>
 
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Confirm Password</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Confirm Password</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -193,17 +193,8 @@ const MidwifeRegister = () => {
                                     }}
                                 />
                             </Box>
-                        </Box>
 
-                        {/* Pagination & Next Button Section */}
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                mt: 1
-                            }}
-                        >
+                            {/* Register Button - inside form box to match field width */}
                             <Button
                                 variant="contained"
                                 onClick={() => { }}
@@ -216,6 +207,7 @@ const MidwifeRegister = () => {
                                     textTransform: 'none',
                                     fontSize: '16px',
                                     fontWeight: 500,
+                                    mt: 1,
                                     '&:hover': {
                                         bgcolor: '#35b058'
                                     }
@@ -224,6 +216,7 @@ const MidwifeRegister = () => {
                                 Register
                             </Button>
                         </Box>
+
                     </Box>
                 </Box>
             </Box>

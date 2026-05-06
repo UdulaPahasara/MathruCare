@@ -47,11 +47,11 @@ const AdminSignup = () => {
                         flexDirection: 'column',
                         justifyContent: 'center',
                         alignItems: { xs: 'center', lg: 'flex-start' },
-                        ml: { sm: '20px', md: '40px', lg: '10px' },
-                        mt: { xs: 4, sm: 0, lg: '-190px' },
+                        ml: { sm: '-1px', md: '40px', lg: '10px' },
+                        mt: { xs: 4, sm: 0 },
                         pl: { lg: '192px' },
                         pr: { sm: '20px', md: '40px', lg: '100px' },
-                        py: { xs: 4, sm: 6, lg: 0 },
+                        py: { xs: 4, sm: 3, lg: 0 },
                         px: { xs: 2, sm: 0 } // Mobile padding fallback
                     }}
                 >
@@ -61,11 +61,11 @@ const AdminSignup = () => {
                             maxWidth: { xs: 463, lg: 600 },
                             display: 'flex',
                             flexDirection: 'column',
-                            gap: '40px'
+                            gap: '20px'
                         }}
                     >
                         {/* Header Section */}
-                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', ml: { lg: '-100px' } }}>
                             <Typography
                                 variant="h3"
                                 sx={{
@@ -89,9 +89,9 @@ const AdminSignup = () => {
                         </Box>
 
                         {/* Form Details Section */}
-                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px', ml: { sm: '-11px', lg: '-120px' } }}>
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Email Address</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Email Address</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -108,7 +108,7 @@ const AdminSignup = () => {
                             </Box>
 
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Enter Password</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Enter Password</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -128,7 +128,7 @@ const AdminSignup = () => {
                             </Box>
 
                             <Box>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Confirm Password</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Confirm Password</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -143,17 +143,8 @@ const AdminSignup = () => {
                                     }}
                                 />
                             </Box>
-                        </Box>
 
-                        {/* Submit Button */}
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                mt: 1
-                            }}
-                        >
+                            {/* Register Button - inside form box to match field width */}
                             <Button
                                 variant="contained"
                                 onClick={() => { }}
@@ -161,11 +152,12 @@ const AdminSignup = () => {
                                 sx={{
                                     height: '46px',
                                     borderRadius: '10px',
-                                    background: '#3DC664',
+                                    bgcolor: '#3DC664',
                                     color: '#FFFFFF',
                                     textTransform: 'none',
                                     fontSize: '16px',
                                     fontWeight: 500,
+                                    mt: 1,
                                     '&:hover': {
                                         bgcolor: '#35b058'
                                     }
@@ -174,6 +166,7 @@ const AdminSignup = () => {
                                 Register
                             </Button>
                         </Box>
+
                     </Box>
                 </Box>
             </Box>
