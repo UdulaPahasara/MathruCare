@@ -20,7 +20,7 @@ const Share = () => {
                 color: '#FFFFFF',
                 position: 'relative',
                 overflow: 'hidden',
-                ml: { xs: 0, sm: '-20px', md: 0, lg: -3.8 },
+                ml: { xs: 0, sm: '-20px', md: 0, lg: -5 },
                 pt: { xs: 4, md: 6, lg: 8 }
             }}
         >
