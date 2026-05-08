@@ -6,8 +6,12 @@ import {
     Button,
     Select,
     MenuItem,
-    FormControl
+    FormControl,
+    IconButton,
+    InputAdornment
 } from '@mui/material';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useNavigate } from 'react-router-dom';
 import Share from '../share/share';
 
@@ -19,6 +23,11 @@ const MidwifeRegister = () => {
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const handleClickShowPassword = () => setShowPassword(!showPassword);
+    const handleClickShowConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
 
     return (
         <Box
@@ -58,7 +67,7 @@ const MidwifeRegister = () => {
                         pl: { lg: '192px' },
                         pr: { sm: '20px', md: '40px', lg: '100px' },
                         py: { xs: 4, sm: 3, lg: 0 },
-                        px: { xs: 2, sm: 0 } // Mobile padding fallback
+                        px: { xs: 2, sm: 0 }
                     }}
                 >
                     <Box
@@ -176,9 +185,36 @@ const MidwifeRegister = () => {
                                 <TextField
                                     fullWidth
                                     size="small"
-                                    type="password"
+                                    type={showPassword ? 'text' : 'password'}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
+                                    slotProps={{
+                                        input: {
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                    <IconButton onClick={handleClickShowPassword} edge="end" size="small">
+                                                        {showPassword ? (
+                                                            <VisibilityOff sx={{ fontSize: 20, color: '#666' }} />
+                                                        ) : (
+                                                            <Visibility sx={{ fontSize: 20, color: '#666' }} />
+                                                        )}
+                                                        <Typography
+                                                            variant="caption"
+                                                            sx={{
+                                                                ml: 0.5,
+                                                                fontWeight: 600,
+                                                                fontSize: '10px',
+                                                                fontFamily: "'Poppins', sans-serif",
+                                                                color: '#666'
+                                                            }}
+                                                        >
+                                                            {showPassword ? 'Hide' : 'Show'}
+                                                        </Typography>
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            ),
+                                        }
+                                    }}
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
@@ -197,9 +233,36 @@ const MidwifeRegister = () => {
                                 <TextField
                                     fullWidth
                                     size="small"
-                                    type="password"
+                                    type={showConfirmPassword ? 'text' : 'password'}
                                     value={confirmPassword}
                                     onChange={(e) => setConfirmPassword(e.target.value)}
+                                    slotProps={{
+                                        input: {
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                    <IconButton onClick={handleClickShowConfirmPassword} edge="end" size="small">
+                                                        {showConfirmPassword ? (
+                                                            <VisibilityOff sx={{ fontSize: 20, color: '#666' }} />
+                                                        ) : (
+                                                            <Visibility sx={{ fontSize: 20, color: '#666' }} />
+                                                        )}
+                                                        <Typography
+                                                            variant="caption"
+                                                            sx={{
+                                                                ml: 0.5,
+                                                                fontWeight: 600,
+                                                                fontSize: '10px',
+                                                                fontFamily: "'Poppins', sans-serif",
+                                                                color: '#666'
+                                                            }}
+                                                        >
+                                                            {showConfirmPassword ? 'Hide' : 'Show'}
+                                                        </Typography>
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            ),
+                                        }
+                                    }}
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',

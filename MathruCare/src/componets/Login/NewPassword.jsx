@@ -3,8 +3,12 @@ import {
     Box,
     Typography,
     TextField,
-    Button
+    Button,
+    IconButton,
+    InputAdornment
 } from '@mui/material';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -15,6 +19,11 @@ const NewPassword = () => {
     const navigate = useNavigate();
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const handleClickShowPassword = () => setShowPassword(!showPassword);
+    const handleClickShowConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
 
     return (
         <Box
@@ -129,10 +138,37 @@ const NewPassword = () => {
                     <TextField
                         fullWidth
                         size="small"
-                        type="password"
+                        type={showPassword ? 'text' : 'password'}
                         variant="outlined"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        slotProps={{
+                            input: {
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton onClick={handleClickShowPassword} edge="end" size="small">
+                                            {showPassword ? (
+                                                <VisibilityOff sx={{ fontSize: 20, color: '#666' }} />
+                                            ) : (
+                                                <Visibility sx={{ fontSize: 20, color: '#666' }} />
+                                            )}
+                                            <Typography
+                                                variant="caption"
+                                                sx={{
+                                                    ml: 0.5,
+                                                    fontWeight: 600,
+                                                    fontSize: '10px',
+                                                    fontFamily: "'Poppins', sans-serif",
+                                                    color: '#666'
+                                                }}
+                                            >
+                                                {showPassword ? 'Hide' : 'Show'}
+                                            </Typography>
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            }
+                        }}
                         sx={{
                             '& .MuiOutlinedInput-root': {
                                 borderRadius: '10px',
@@ -164,10 +200,37 @@ const NewPassword = () => {
                     <TextField
                         fullWidth
                         size="small"
-                        type="password"
+                        type={showConfirmPassword ? 'text' : 'password'}
                         variant="outlined"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
+                        slotProps={{
+                            input: {
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton onClick={handleClickShowConfirmPassword} edge="end" size="small">
+                                            {showConfirmPassword ? (
+                                                <VisibilityOff sx={{ fontSize: 20, color: '#666' }} />
+                                            ) : (
+                                                <Visibility sx={{ fontSize: 20, color: '#666' }} />
+                                            )}
+                                            <Typography
+                                                variant="caption"
+                                                sx={{
+                                                    ml: 0.5,
+                                                    fontWeight: 600,
+                                                    fontSize: '10px',
+                                                    fontFamily: "'Poppins', sans-serif",
+                                                    color: '#666'
+                                                }}
+                                            >
+                                                {showConfirmPassword ? 'Hide' : 'Show'}
+                                            </Typography>
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            }
+                        }}
                         sx={{
                             '& .MuiOutlinedInput-root': {
                                 borderRadius: '10px',

@@ -205,7 +205,7 @@ const Login = () => {
                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
                         <Typography sx={{ fontWeight: 500, color: '#333', fontSize: { xs: '13px', md: '13.5px', lg: '14px' }, fontFamily: "'Poppins', sans-serif" }}>
                             {role === 'mother' ? 'Enter Mother Registration Number' :
-                                role === 'midwife' ? 'Enter Midwife ID' : 'Enter Admin Username'}
+                                role === 'midwife' ? 'Enter Midwife Registration Number' : 'Enter Admin Email'}
                         </Typography>
                         <TextField
                             fullWidth
@@ -237,17 +237,32 @@ const Login = () => {
                             placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <IconButton onClick={handleClickShowPassword} edge="end" size="small">
-                                            {showPassword ? <VisibilityOff sx={{ fontSize: 16 }} /> : <Visibility sx={{ fontSize: 16 }} />}
-                                            <Typography variant="caption" sx={{ ml: 0.5, fontWeight: 500, fontSize: '9px', fontFamily: "'Poppins', sans-serif" }}>
-                                                {showPassword ? 'Hide' : 'Show'}
-                                            </Typography>
-                                        </IconButton>
-                                    </InputAdornment>
-                                ),
+                            slotProps={{
+                                input: {
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <IconButton onClick={handleClickShowPassword} edge="end" size="small">
+                                                {showPassword ? (
+                                                    <VisibilityOff sx={{ fontSize: 20, color: '#666' }} />
+                                                ) : (
+                                                    <Visibility sx={{ fontSize: 20, color: '#666' }} />
+                                                )}
+                                                <Typography
+                                                    variant="caption"
+                                                    sx={{
+                                                        ml: 0.5,
+                                                        fontWeight: 600,
+                                                        fontSize: '10px',
+                                                        fontFamily: "'Poppins', sans-serif",
+                                                        color: '#666'
+                                                    }}
+                                                >
+                                                    {showPassword ? 'Hide' : 'Show'}
+                                                </Typography>
+                                            </IconButton>
+                                        </InputAdornment>
+                                    ),
+                                }
                             }}
                             sx={{
                                 '& .MuiOutlinedInput-root': {
