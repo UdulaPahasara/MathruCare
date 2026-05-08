@@ -66,7 +66,7 @@ const RegisterNext = () => {
                         {/* Form Details Section */}
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px', ml: { sm: '-11px', lg: '-120px' } }}>
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Enter Password</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Enter Password</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -76,17 +76,18 @@ const RegisterNext = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
-                                            bgcolor: '#FFFFFF'
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
                                         }
                                     }}
                                 />
-                                <Typography sx={{ mt: 0.5, fontSize: '12px', color: '#666666' }}>
+                                <Typography sx={{ mt: 0.5, fontSize: '12px', color: '#666666', fontFamily: "'Poppins', sans-serif" }}>
                                     Use 8 characters with a mix of letters, numbers & symbols
                                 </Typography>
                             </Box>
 
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Confirm Password</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Confirm Password</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -96,7 +97,8 @@ const RegisterNext = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
-                                            bgcolor: '#FFFFFF'
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
                                         }
                                     }}
                                 />
@@ -140,7 +142,8 @@ const RegisterNext = () => {
                                         '&:hover': {
                                             borderColor: '#333333',
                                             bgcolor: 'rgba(0,0,0,0.02)'
-                                        }
+                                        },
+                                        fontFamily: "'Poppins', sans-serif"
                                     }}
                                 >
                                     Back
@@ -164,7 +167,8 @@ const RegisterNext = () => {
                                     left: { lg: '-54px' },
                                     '&:hover': {
                                         bgcolor: '#35b058'
-                                    }
+                                    },
+                                    fontFamily: "'Poppins', sans-serif"
                                 }}
                             >
                                 Register

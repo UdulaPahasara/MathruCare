@@ -95,7 +95,8 @@ const VerificationCode = () => {
                         color: '#4a4a4a',
                         fontSize: { xs: '11px', md: '14px', lg: '16px' },
                         fontWeight: 400,
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        fontFamily: "'Poppins', sans-serif"
                     }}
                 >
                     Supporting maternal health with trusted digital care
@@ -126,7 +127,8 @@ const VerificationCode = () => {
                         color: '#1a1a1a',
                         fontSize: { xs: '24px', md: '36px' },
                         mb: 1,
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        fontFamily: "'Poppins', sans-serif"
                     }}
                 >
                     Verification Code
@@ -140,7 +142,8 @@ const VerificationCode = () => {
                         fontSize: { xs: '13px', md: '14px' },
                         mb: 3,
                         lineHeight: 1.5,
-                        fontWeight: 500
+                        fontWeight: 500,
+                        fontFamily: "'Poppins', sans-serif"
                     }}
                 >
                     Please enter the 4 digit code sent to your email.
@@ -173,6 +176,7 @@ const VerificationCode = () => {
                                     fontSize: '20px',
                                     fontWeight: 700,
                                     bgcolor: '#FFFFFF',
+                                    fontFamily: "'Poppins', sans-serif",
                                     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.05)',
                                     '& fieldset': {
                                         borderColor: '#D1D5DB',
@@ -205,6 +209,7 @@ const VerificationCode = () => {
                         fontSize: '16px',
                         fontWeight: 700,
                         mb: 3,
+                        fontFamily: "'Poppins', sans-serif",
                         '&:hover': {
                             opacity: 0.9,
                             background: 'linear-gradient(180deg, #35b058 0%, #1e8038 100%)'
@@ -219,7 +224,8 @@ const VerificationCode = () => {
                     sx={{
                         color: '#666',
                         fontSize: '13px',
-                        fontWeight: 500
+                        fontWeight: 500,
+                        fontFamily: "'Poppins', sans-serif"
                     }}
                 >
                     Didn't get the code?{' '}
@@ -230,6 +236,7 @@ const VerificationCode = () => {
                             color: '#1a1a1a',
                             fontWeight: 700,
                             textDecoration: 'none',
+                            fontFamily: "'Poppins', sans-serif",
                             '&:hover': { textDecoration: 'underline' }
                         }}
                     >

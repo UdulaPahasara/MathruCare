@@ -20,7 +20,7 @@ const Share = () => {
                 color: '#FFFFFF',
                 position: 'relative',
                 overflow: 'hidden',
-                ml: { xs: 0,sm:'-20px', md: 0, lg: -3.8 },
+                ml: { xs: 0, sm: '-20px', md: 0, lg: -3.8 },
                 pt: { xs: 4, md: 6, lg: 8 }
             }}
         >
@@ -67,7 +67,8 @@ const Share = () => {
                     sx={{
                         fontWeight: 500,
                         fontSize: { xs: '20px', md: '28px' },
-                        mb: 1
+                        mb: 1,
+                        fontFamily: "'Poppins', sans-serif"
                     }}
                 >
                     MathruCare
@@ -80,7 +81,8 @@ const Share = () => {
                         fontWeight: 400,
                         textAlign: 'center',
                         maxWidth: '100%',
-                        lineHeight: 1.4
+                        lineHeight: 1.4,
+                        fontFamily: "'Poppins', sans-serif"
                     }}
                 >
                     Supporting maternal health with<br />trusted digital care

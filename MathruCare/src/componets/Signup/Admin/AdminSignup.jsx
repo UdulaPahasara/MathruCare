@@ -71,7 +71,8 @@ const AdminSignup = () => {
                                 sx={{
                                     fontWeight: 600,
                                     fontSize: { xs: '28px', md: '36px' },
-                                    color: '#1A1A1A' 
+                                    color: '#1A1A1A',
+                                    fontFamily: "'Poppins', sans-serif"
                                 }}
                             >
                                 Create an Account
@@ -81,7 +82,8 @@ const AdminSignup = () => {
                                 sx={{
                                     fontSize: { xs: '16px', md: '18px' },
                                     color: '#666666',
-                                    fontWeight: 400
+                                    fontWeight: 400,
+                                    fontFamily: "'Poppins', sans-serif"
                                 }}
                             >
                                 Register as a MOH Admin
@@ -91,7 +93,7 @@ const AdminSignup = () => {
                         {/* Form Details Section */}
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px', ml: { sm: '-11px', lg: '-120px' } }}>
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Email Address</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Email Address</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -101,14 +103,15 @@ const AdminSignup = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
-                                            bgcolor: '#FFFFFF'
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
                                         }
                                     }}
                                 />
                             </Box>
 
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Enter Password</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Enter Password</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -118,17 +121,18 @@ const AdminSignup = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
-                                            bgcolor: '#FFFFFF'
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
                                         }
                                     }}
                                 />
-                                <Typography sx={{ mt: 0.5, fontSize: '12px', color: '#666666' }}>
+                                <Typography sx={{ mt: 0.5, fontSize: '12px', color: '#666666', fontFamily: "'Poppins', sans-serif" }}>
                                     Use 8 characters with a mix of letters, numbers & symbols
                                 </Typography>
                             </Box>
 
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Confirm Password</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Confirm Password</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -138,7 +142,8 @@ const AdminSignup = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
-                                            bgcolor: '#FFFFFF'
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
                                         }
                                     }}
                                 />
@@ -160,7 +165,8 @@ const AdminSignup = () => {
                                         mt: 1,
                                         '&:hover': {
                                             bgcolor: '#35b058'
-                                        }
+                                        },
+                                        fontFamily: "'Poppins', sans-serif"
                                     }}
                                 >
                                     Register

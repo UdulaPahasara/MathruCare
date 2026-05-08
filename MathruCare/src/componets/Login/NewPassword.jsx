@@ -75,7 +75,8 @@ const NewPassword = () => {
                         color: '#4a4a4a',
                         fontSize: { xs: '11px', md: '14px', lg: '16px' },
                         fontWeight: 400,
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        fontFamily: "'Poppins', sans-serif"
                     }}
                 >
                     Supporting maternal health with trusted digital care
@@ -106,7 +107,8 @@ const NewPassword = () => {
                         color: '#1a1a1a',
                         fontSize: { xs: '24px', md: '36px' },
                         mb: 3,
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        fontFamily: "'Poppins', sans-serif"
                     }}
                 >
                     Create New Password
@@ -121,7 +123,7 @@ const NewPassword = () => {
                         mb: 1
                     }}
                 >
-                    <Typography sx={{ fontWeight: 500, color: '#333', fontSize: { xs: '13px', md: '14px' } }}>
+                    <Typography sx={{ fontWeight: 500, color: '#333', fontSize: { xs: '13px', md: '14px' }, fontFamily: "'Poppins', sans-serif" }}>
                         Enter Password
                     </Typography>
                     <TextField
@@ -135,13 +137,14 @@ const NewPassword = () => {
                             '& .MuiOutlinedInput-root': {
                                 borderRadius: '10px',
                                 bgcolor: '#FFFFFF',
+                                fontFamily: "'Poppins', sans-serif",
                                 '& fieldset': { borderColor: '#E5E7EB' },
                                 '&:hover fieldset': { borderColor: '#4CAF50' },
                                 '&.Mui-focused fieldset': { borderColor: '#4CAF50' }
                             }
                         }}
                     />
-                    <Typography sx={{ color: '#888', fontSize: { xs: '11px', md: '12px' }, mt: 0.5 }}>
+                    <Typography sx={{ color: '#888', fontSize: { xs: '11px', md: '12px' }, mt: 0.5, fontFamily: "'Poppins', sans-serif" }}>
                         Use 8 characters with a mix of letters, numbers & symbols
                     </Typography>
                 </Box>
@@ -155,7 +158,7 @@ const NewPassword = () => {
                         mb: { xs: 3, md: 4 }
                     }}
                 >
-                    <Typography sx={{ fontWeight: 500, color: '#333', fontSize: { xs: '13px', md: '14px' } }}>
+                    <Typography sx={{ fontWeight: 500, color: '#333', fontSize: { xs: '13px', md: '14px' }, fontFamily: "'Poppins', sans-serif" }}>
                         Confirm Password
                     </Typography>
                     <TextField
@@ -169,6 +172,7 @@ const NewPassword = () => {
                             '& .MuiOutlinedInput-root': {
                                 borderRadius: '10px',
                                 bgcolor: '#FFFFFF',
+                                fontFamily: "'Poppins', sans-serif",
                                 '& fieldset': { borderColor: '#E5E7EB' },
                                 '&:hover fieldset': { borderColor: '#4CAF50' },
                                 '&.Mui-focused fieldset': { borderColor: '#4CAF50' }
@@ -185,6 +189,7 @@ const NewPassword = () => {
                         height: { xs: 44, md: 48 },
                         borderRadius: '12px',
                         background: 'linear-gradient(180deg, #3DC664 0%, #219140 100%)',
+                        fontFamily: "'Poppins', sans-serif",
                         textTransform: 'none',
                         fontSize: '16px',
                         fontWeight: 700,

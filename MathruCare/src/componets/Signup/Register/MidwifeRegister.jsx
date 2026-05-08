@@ -71,13 +71,14 @@ const MidwifeRegister = () => {
                         }}
                     >
                         {/* Header Section */}
-                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', ml: { lg: '-100px' } }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', ml: { lg: '-100px' }, textAlign: 'center' }}>
                             <Typography
                                 variant="h3"
                                 sx={{
                                     fontWeight: 600,
                                     fontSize: { xs: '28px', md: '36px' },
-                                    color: '#1A1A1A'
+                                    color: '#1A1A1A',
+                                    fontFamily: "'Poppins', sans-serif"
                                 }}
                             >
                                 Create an Account
@@ -87,7 +88,8 @@ const MidwifeRegister = () => {
                                 sx={{
                                     fontSize: { xs: '16px', md: '18px' },
                                     color: '#666666',
-                                    fontWeight: 400
+                                    fontWeight: 400,
+                                    fontFamily: "'Poppins', sans-serif"
                                 }}
                             >
                                 Register as a midwife
@@ -97,7 +99,7 @@ const MidwifeRegister = () => {
                         {/* Form Details Section */}
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px', ml: { sm: '-11px', lg: '-120px' } }}>
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Registration Number</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Registration Number</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -106,14 +108,15 @@ const MidwifeRegister = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
-                                            bgcolor: '#FFFFFF'
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
                                         }
                                     }}
                                 />
                             </Box>
 
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Full Name</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Full Name</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -122,14 +125,15 @@ const MidwifeRegister = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
-                                            bgcolor: '#FFFFFF'
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
                                         }
                                     }}
                                 />
                             </Box>
 
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>MOH Division</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>MOH Division</Typography>
                                 <FormControl fullWidth size="small">
                                     <Select
                                         value={mohDivision}
@@ -137,20 +141,21 @@ const MidwifeRegister = () => {
                                         displayEmpty
                                         sx={{
                                             borderRadius: '8px',
-                                            bgcolor: '#FFFFFF'
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
                                         }}
                                     >
                                         <MenuItem value="" disabled>
-                                            <span style={{ color: '#9CA3AF' }}>Select MOH Division</span>
+                                            <span style={{ color: '#9CA3AF', fontFamily: "'Poppins', sans-serif" }}>Select MOH Division</span>
                                         </MenuItem>
-                                        <MenuItem value="division1">Colombo</MenuItem>
-                                        <MenuItem value="division2">Kandy</MenuItem>
+                                        <MenuItem value="division1" sx={{ fontFamily: "'Poppins', sans-serif" }}>Colombo</MenuItem>
+                                        <MenuItem value="division2" sx={{ fontFamily: "'Poppins', sans-serif" }}>Kandy</MenuItem>
                                     </Select>
                                 </FormControl>
                             </Box>
 
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Phone Number</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Phone Number</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -159,14 +164,15 @@ const MidwifeRegister = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
-                                            bgcolor: '#FFFFFF'
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
                                         }
                                     }}
                                 />
                             </Box>
 
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Enter Password</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Enter Password</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -176,17 +182,18 @@ const MidwifeRegister = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
-                                            bgcolor: '#FFFFFF'
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
                                         }
                                     }}
                                 />
-                                <Typography sx={{ mt: 0.5, fontSize: '12px', color: '#666666' }}>
+                                <Typography sx={{ mt: 0.5, fontSize: '12px', color: '#666666', fontFamily: "'Poppins', sans-serif" }}>
                                     Use 8 characters with a mix of letters, numbers & symbols
                                 </Typography>
                             </Box>
 
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Confirm Password</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Confirm Password</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -196,7 +203,8 @@ const MidwifeRegister = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
-                                            bgcolor: '#FFFFFF'
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
                                         }
                                     }}
                                 />
@@ -218,7 +226,8 @@ const MidwifeRegister = () => {
                                         mt: 1,
                                         '&:hover': {
                                             bgcolor: '#35b058'
-                                        }
+                                        },
+                                        fontFamily: "'Poppins', sans-serif"
                                     }}
                                 >
                                     Register

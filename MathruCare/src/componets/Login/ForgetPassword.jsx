@@ -75,7 +75,8 @@ const ForgetPassword = () => {
                         color: '#4a4a4a',
                         fontSize: { xs: '11px', md: '14px', lg: '16px' },
                         fontWeight: 400,
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        fontFamily: "'Poppins', sans-serif"
                     }}
                 >
                     Supporting maternal health with trusted digital care
@@ -105,7 +106,8 @@ const ForgetPassword = () => {
                         color: '#1a1a1a',
                         fontSize: { xs: '22px', md: '30px', lg: '36px' },
                         mb: 1,
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        fontFamily: "'Poppins', sans-serif"
                     }}
                 >
                     Forgot Password?
@@ -119,7 +121,8 @@ const ForgetPassword = () => {
                         fontSize: { xs: '12px', md: '13px', lg: '14px' },
                         mb: { xs: 2, md: 3 },
                         lineHeight: 1.5,
-                        fontWeight: 500
+                        fontWeight: 500,
+                        fontFamily: "'Poppins', sans-serif"
                     }}
                 >
                     We need your registration phone number to send you password reset code!
@@ -134,7 +137,7 @@ const ForgetPassword = () => {
                         mb: { xs: 2, md: 3 }
                     }}
                 >
-                    <Typography sx={{ fontFamily: "'Poppins', sans-serif",fontWeight: 500, color: '#333', fontSize: { xs: '13px', md: '14px' } }}>
+                    <Typography sx={{ fontFamily: "'Poppins', sans-serif", fontWeight: 500, color: '#333', fontSize: { xs: '13px', md: '14px' } }}>
                         Enter your email address
                     </Typography>
                     <TextField
@@ -148,6 +151,7 @@ const ForgetPassword = () => {
                             '& .MuiOutlinedInput-root': {
                                 borderRadius: '10px',
                                 bgcolor: '#FFFFFF',
+                                fontFamily: "'Poppins', sans-serif",
                                 '& fieldset': { borderColor: '#E5E7EB' },
                                 '&:hover fieldset': { borderColor: '#4CAF50' },
                                 '&.Mui-focused fieldset': { borderColor: '#4CAF50' }
@@ -167,6 +171,7 @@ const ForgetPassword = () => {
                         textTransform: 'none',
                         fontSize: '16px',
                         fontWeight: 700,
+                        fontFamily: "'Poppins', sans-serif",
                         '&:hover': {
                             opacity: 0.9,
                             background: 'linear-gradient(180deg, #35b058 0%, #1e8038 100%)'

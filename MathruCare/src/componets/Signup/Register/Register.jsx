@@ -81,7 +81,8 @@ const Register = () => {
                                 sx={{
                                     fontWeight: 600,
                                     fontSize: { xs: '28px', md: '36px' },
-                                    color: '#1A1A1A'
+                                    color: '#1A1A1A',
+                                    fontFamily: "'Poppins', sans-serif"
                                 }}
                             >
                                 Create an Account
@@ -91,7 +92,8 @@ const Register = () => {
                                 sx={{
                                     fontSize: { xs: '16px', md: '18px' },
                                     color: '#666666',
-                                    fontWeight: 400
+                                    fontWeight: 400,
+                                    fontFamily: "'Poppins', sans-serif"
                                 }}
                             >
                                 Register as a new mother
@@ -101,7 +103,7 @@ const Register = () => {
                         {/* Form Details Section */}
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '12px', ml: { sm: '-11px', lg: '-120px' } }}>
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Full Name</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Full Name</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -110,14 +112,15 @@ const Register = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
-                                            bgcolor: '#FFFFFF'
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
                                         }
                                     }}
                                 />
                             </Box>
 
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>MOH Division</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>MOH Division</Typography>
                                 <FormControl fullWidth size="small">
                                     <Select
                                         value={mohDivision}
@@ -125,20 +128,21 @@ const Register = () => {
                                         displayEmpty
                                         sx={{
                                             borderRadius: '8px',
-                                            bgcolor: '#FFFFFF'
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
                                         }}
                                     >
                                         <MenuItem value="" disabled>
-                                            <span style={{ color: '#9CA3AF' }}>Select MOH Division</span>
+                                            <span style={{ color: '#9CA3AF', fontFamily: "'Poppins', sans-serif" }}>Select MOH Division</span>
                                         </MenuItem>
-                                        <MenuItem value="division1">Colombo</MenuItem>
-                                        <MenuItem value="division2">Kandy</MenuItem>
+                                        <MenuItem value="division1" sx={{ fontFamily: "'Poppins', sans-serif" }}>Colombo</MenuItem>
+                                        <MenuItem value="division2" sx={{ fontFamily: "'Poppins', sans-serif" }}>Kandy</MenuItem>
                                     </Select>
                                 </FormControl>
                             </Box>
 
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Phone Number</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Phone Number</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -147,14 +151,15 @@ const Register = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
-                                            bgcolor: '#FFFFFF'
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
                                         }
                                     }}
                                 />
                             </Box>
 
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Email</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Email</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -165,14 +170,15 @@ const Register = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
-                                            bgcolor: '#FFFFFF'
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
                                         }
                                     }}
                                 />
                             </Box>
 
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
-                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Last Menstrual Period (LMP) date</Typography>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Last Menstrual Period (LMP) date</Typography>
                                 <TextField
                                     fullWidth
                                     size="small"
@@ -182,7 +188,8 @@ const Register = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
-                                            bgcolor: '#FFFFFF'
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
                                         }
                                     }}
                                     InputLabelProps={{ shrink: true }}
@@ -191,7 +198,7 @@ const Register = () => {
 
                             <Box sx={{ display: 'flex', gap: 2, maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Box sx={{ flex: 1 }}>
-                                    <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Current Height (cm)</Typography>
+                                    <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Current Height (cm)</Typography>
                                     <TextField
                                         fullWidth
                                         size="small"
@@ -201,13 +208,14 @@ const Register = () => {
                                         sx={{
                                             '& .MuiOutlinedInput-root': {
                                                 borderRadius: '8px',
-                                                bgcolor: '#FFFFFF'
+                                                bgcolor: '#FFFFFF',
+                                                fontFamily: "'Poppins', sans-serif"
                                             }
                                         }}
                                     />
                                 </Box>
                                 <Box sx={{ flex: 1 }}>
-                                    <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px' }}>Current Weight (kg)</Typography>
+                                    <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Current Weight (kg)</Typography>
                                     <TextField
                                         fullWidth
                                         size="small"
@@ -217,7 +225,8 @@ const Register = () => {
                                         sx={{
                                             '& .MuiOutlinedInput-root': {
                                                 borderRadius: '8px',
-                                                bgcolor: '#FFFFFF'
+                                                bgcolor: '#FFFFFF',
+                                                fontFamily: "'Poppins', sans-serif"
                                             }
                                         }}
                                     />
@@ -240,7 +249,7 @@ const Register = () => {
                                             }}
                                         />
                                     }
-                                    label={<Typography sx={{ fontSize: '14px', color: '#1A1A1A', fontWeight: 500 }}>Do you have diabetes?</Typography>}
+                                    label={<Typography sx={{ fontSize: '14px', color: '#1A1A1A', fontWeight: 500, fontFamily: "'Poppins', sans-serif" }}>Do you have diabetes?</Typography>}
                                     sx={{ ml: -1, mt: -0.5 }}
                                 />
                             </Box>
@@ -255,7 +264,7 @@ const Register = () => {
                                     justifyContent: 'flex-end',
                                     position: 'relative',
                                     mt: 0,
-                                   ml: { xs: '110px', sm: "220px", md: "240px", lg: '170px' }
+                                    ml: { xs: '110px', sm: "220px", md: "240px", lg: '170px' }
                                 }}
                             >
                                 {/* Green Progress Navigation - Positioned Left using absolute or matching space-between */}
@@ -279,6 +288,7 @@ const Register = () => {
                                         px: '10px',
                                         mt: { md: '-20px', lg: '-30px' },
                                         mr: { lg: '12px' },
+                                        fontFamily: "'Poppins', sans-serif",
                                         '&:hover': {
                                             bgcolor: '#333333'
                                         }

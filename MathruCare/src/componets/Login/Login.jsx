@@ -102,7 +102,8 @@ const Login = () => {
                         color: '#4a4a4a',
                         fontSize: { xs: '11px', md: '14px', lg: '16px' },
                         fontWeight: 400,
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        fontFamily: "'Poppins', sans-serif"
                     }}
                 >
                     Supporting maternal health with trusted digital care
@@ -132,7 +133,8 @@ const Login = () => {
                         color: '#666',
                         mb: { xs: 1.5, md: 2, lg: 2.5 },
                         fontSize: { xs: '16px', md: '17px', lg: '18px' },
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        fontFamily: "'Poppins', sans-serif"
                     }}
                 >
                     Sign in to access your account
@@ -158,6 +160,7 @@ const Login = () => {
                             textTransform: 'none',
                             fontWeight: 600,
                             fontSize: { xs: '12px', md: '13px', lg: '14px' },
+                            fontFamily: "'Poppins', sans-serif",
                             color: '#666',
                             display: 'flex',
                             gap: { xs: 0.5, md: 1 },
@@ -200,7 +203,7 @@ const Login = () => {
                     }}
                 >
                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-                        <Typography sx={{ fontWeight: 500, color: '#333', fontSize: { xs: '13px', md: '13.5px', lg: '14px' } }}>
+                        <Typography sx={{ fontWeight: 500, color: '#333', fontSize: { xs: '13px', md: '13.5px', lg: '14px' }, fontFamily: "'Poppins', sans-serif" }}>
                             {role === 'mother' ? 'Enter Mother Registration Number' :
                                 role === 'midwife' ? 'Enter Midwife ID' : 'Enter Admin Username'}
                         </Typography>
@@ -215,6 +218,7 @@ const Login = () => {
                                 '& .MuiOutlinedInput-root': {
                                     borderRadius: '10px',
                                     bgcolor: '#F9FAFB',
+                                    fontFamily: "'Poppins', sans-serif",
                                     '& fieldset': { borderColor: '#E5E7EB' }
                                 }
                             }}
@@ -222,7 +226,7 @@ const Login = () => {
                     </Box>
 
                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-                        <Typography sx={{ fontWeight: 500, color: '#333', fontSize: { xs: '13px', md: '13.5px', lg: '14px' } }}>
+                        <Typography sx={{ fontWeight: 500, color: '#333', fontSize: { xs: '13px', md: '13.5px', lg: '14px' }, fontFamily: "'Poppins', sans-serif" }}>
                             Password
                         </Typography>
                         <TextField
@@ -238,7 +242,7 @@ const Login = () => {
                                     <InputAdornment position="end">
                                         <IconButton onClick={handleClickShowPassword} edge="end" size="small">
                                             {showPassword ? <VisibilityOff sx={{ fontSize: 16 }} /> : <Visibility sx={{ fontSize: 16 }} />}
-                                            <Typography variant="caption" sx={{ ml: 0.5, fontWeight: 500, fontSize: '9px' }}>
+                                            <Typography variant="caption" sx={{ ml: 0.5, fontWeight: 500, fontSize: '9px', fontFamily: "'Poppins', sans-serif" }}>
                                                 {showPassword ? 'Hide' : 'Show'}
                                             </Typography>
                                         </IconButton>
@@ -249,6 +253,7 @@ const Login = () => {
                                 '& .MuiOutlinedInput-root': {
                                     borderRadius: '10px',
                                     bgcolor: '#F9FAFB',
+                                    fontFamily: "'Poppins', sans-serif",
                                     '& fieldset': { borderColor: '#E5E7EB' }
                                 }
                             }}
@@ -264,7 +269,8 @@ const Login = () => {
                             fontWeight: 700,
                             fontSize: '12px',
                             textDecoration: 'underline',
-                            width: 'fit-content'
+                            width: 'fit-content',
+                            fontFamily: "'Poppins', sans-serif"
                         }}
                     >
                         Forget your password?
@@ -281,6 +287,7 @@ const Login = () => {
                             fontSize: '15px',
                             fontWeight: 700,
                             mt: 0.5,
+                            fontFamily: "'Poppins', sans-serif",
                             '&:hover': { bgcolor: '#43A047' }
                         }}
                     >
@@ -293,7 +300,8 @@ const Login = () => {
                             textAlign: 'center',
                             color: '#666',
                             mt: { xs: 0.5, md: 1 },
-                            fontSize: '12px'
+                            fontSize: '12px',
+                            fontFamily: "'Poppins', sans-serif"
                         }}
                     >
                         Don't have an acount?{' '}
@@ -303,6 +311,7 @@ const Login = () => {
                                 color: '#333',
                                 fontWeight: 700,
                                 cursor: 'pointer',
+                                fontFamily: "'Poppins', sans-serif",
                                 '&:hover': { color: '#4CAF50' }
                             }}
                         >
