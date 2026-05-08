@@ -304,19 +304,27 @@ const Login = () => {
                             fontFamily: "'Poppins', sans-serif"
                         }}
                     >
-                        Don't have an acount?{' '}
-                        <Box
-                            component="span"
-                            sx={{
-                                color: '#333',
-                                fontWeight: 700,
-                                cursor: 'pointer',
-                                fontFamily: "'Poppins', sans-serif",
-                                '&:hover': { color: '#4CAF50' }
-                            }}
-                        >
-                            Register here
-                        </Box>
+                        {role !== 'admin' && (
+                            <>
+                                Don't have an acount?{' '}
+                                <Box
+                                    component="span"
+                                    onClick={() => {
+                                        if (role === 'mother') navigate('/register');
+                                        if (role === 'midwife') navigate('/midwife-register');
+                                    }}
+                                    sx={{
+                                        color: '#333',
+                                        fontWeight: 700,
+                                        cursor: 'pointer',
+                                        fontFamily: "'Poppins', sans-serif",
+                                        '&:hover': { color: '#4CAF50' }
+                                    }}
+                                >
+                                    Register here
+                                </Box>
+                            </>
+                        )}
                     </Typography>
                 </Box>
             </Paper>
