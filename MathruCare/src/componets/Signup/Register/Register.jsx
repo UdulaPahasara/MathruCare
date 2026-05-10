@@ -8,7 +8,9 @@ import {
     MenuItem,
     FormControl,
     Checkbox,
-    FormControlLabel
+    FormControlLabel,
+    Snackbar,
+    Alert
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Share from '../share/share';
@@ -23,6 +25,9 @@ const Register = () => {
     const [height, setHeight] = useState('');
     const [weight, setWeight] = useState('');
     const [hasDiabetes, setHasDiabetes] = useState(false);
+    const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'error' });
+
+    const handleCloseSnackbar = () => setSnackbar({ ...snackbar, open: false });
 
     return (
         <Box
@@ -300,15 +305,23 @@ const Register = () => {
                                 <Button
                                     variant="contained"
                                     onClick={() => {
-                                        if (!fullName || !mohDivision || !phone || !email) {
-                                            alert('Please fill in all required fields (Name, MOH Division, Phone, and Email).');
+                                        if (!fullName || !mohDivision || !phone || !email || !lmpDate || !height || !weight) {
+                                            setSnackbar({
+                                                open: true,
+                                                message: 'Please fill in all required fields (Name, MOH Division, Phone, Email, LMP Date, Height, and Weight).',
+                                                severity: 'error'
+                                            });
                                             return;
                                         }
 
                                         // Validate phone number: must be exactly 10 digits
                                         const phoneDigits = phone.replace(/\D/g, '');
                                         if (phoneDigits.length !== 10) {
-                                            alert('Phone number must be exactly 10 digits.');
+                                            setSnackbar({
+                                                open: true,
+                                                message: 'Phone number must be exactly 10 digits.',
+                                                severity: 'error'
+                                            });
                                             return;
                                         }
 
@@ -355,6 +368,16 @@ const Register = () => {
                     </Box>
                 </Box>
             </Box>
+            <Snackbar
+                open={snackbar.open}
+                autoHideDuration={4000}
+                onClose={handleCloseSnackbar}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            >
+                <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: '100%', fontFamily: "'Poppins', sans-serif" }}>
+                    {snackbar.message}
+                </Alert>
+            </Snackbar>
         </Box>
     );
 };

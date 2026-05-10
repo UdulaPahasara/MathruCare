@@ -27,6 +27,17 @@ const RegisterNext = () => {
     const handleClickShowConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
 
     const handleRegister = async () => {
+        // Password complexity validation: 8 chars, letters, numbers, symbols
+        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/;
+        if (!passwordRegex.test(password)) {
+            setSnackbar({
+                open: true,
+                message: 'Password must be at least 8 characters long and include a mix of letters, numbers, and symbols.',
+                severity: 'error'
+            });
+            return;
+        }
+
         if (password !== confirmPassword) {
             setSnackbar({ open: true, message: 'Passwords do not match', severity: 'error' });
             return;

@@ -38,8 +38,15 @@ const NewPassword = () => {
             setSnackbar({ open: true, message: 'Passwords do not match', severity: 'error' });
             return;
         }
-        if (password.length < 6) {
-            setSnackbar({ open: true, message: 'Password must be at least 6 characters', severity: 'error' });
+
+        // Password complexity validation: 8 chars, letters, numbers, symbols
+        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/;
+        if (!passwordRegex.test(password)) {
+            setSnackbar({
+                open: true,
+                message: 'Password must be at least 8 characters long and include a mix of letters, numbers, and symbols.',
+                severity: 'error'
+            });
             return;
         }
         setLoading(true);

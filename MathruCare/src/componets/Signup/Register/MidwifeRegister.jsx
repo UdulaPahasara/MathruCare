@@ -44,6 +44,17 @@ const MidwifeRegister = () => {
             return;
         }
 
+        // Password complexity validation: 8 chars, letters, numbers, symbols
+        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/;
+        if (!passwordRegex.test(password)) {
+            setSnackbar({
+                open: true,
+                message: 'Password must be at least 8 characters long and include a mix of letters, numbers, and symbols.',
+                severity: 'error'
+            });
+            return;
+        }
+
         // Validate phone number: must be exactly 10 digits
         const phoneDigits = phone.replace(/\D/g, '');
         if (phoneDigits.length !== 10) {
