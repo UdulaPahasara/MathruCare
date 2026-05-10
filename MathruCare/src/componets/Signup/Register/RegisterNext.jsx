@@ -11,6 +11,8 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useNavigate } from 'react-router-dom';
 import Share from '../share/share';
+import { api } from '../../../api/api';
+import { Alert, Snackbar } from '@mui/material';
 
 const RegisterNext = () => {
     const navigate = useNavigate();
@@ -18,9 +20,39 @@ const RegisterNext = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
 
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleClickShowConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
+
+    const handleRegister = async () => {
+        if (password !== confirmPassword) {
+            setSnackbar({ open: true, message: 'Passwords do not match', severity: 'error' });
+            return;
+        }
+
+        const step1Data = JSON.parse(localStorage.getItem('reg_step1') || '{}');
+        if (!step1Data.phone) {
+            setSnackbar({ open: true, message: 'Registration data missing. Please go back.', severity: 'error' });
+            return;
+        }
+
+        setLoading(true);
+        try {
+            await api.post('/auth/register', {
+                ...step1Data,
+                password
+            });
+            setSnackbar({ open: true, message: 'Registration successful! Redirecting to login...', severity: 'success' });
+            localStorage.removeItem('reg_step1');
+            setTimeout(() => navigate('/login'), 2000);
+        } catch (error) {
+            setSnackbar({ open: true, message: error.message || 'Registration failed', severity: 'error' });
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <Box
@@ -217,7 +249,8 @@ const RegisterNext = () => {
                         <Box sx={{ maxWidth: { lg: '85%' }, mx: 'auto', width: '100%', mt: 2, }}>
                             <Button
                                 variant="contained"
-                                onClick={() => { }} // Hook up submission handler later
+                                onClick={handleRegister}
+                                disabled={loading}
                                 fullWidth
                                 sx={{
                                     height: '56px',
@@ -234,13 +267,23 @@ const RegisterNext = () => {
                                     fontFamily: "'Poppins', sans-serif"
                                 }}
                             >
-                                Register
+                                {loading ? 'Registering...' : 'Register'}
                             </Button>
                         </Box>
 
                     </Box>
                 </Box>
             </Box>
+            <Snackbar
+                open={snackbar.open}
+                autoHideDuration={6000}
+                onClose={() => setSnackbar({ ...snackbar, open: false })}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            >
+                <Alert onClose={() => setSnackbar({ ...snackbar, open: false })} severity={snackbar.severity} sx={{ width: '100%' }}>
+                    {snackbar.message}
+                </Alert>
+            </Snackbar>
         </Box>
     );
 };

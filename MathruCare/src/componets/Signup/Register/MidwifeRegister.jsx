@@ -14,6 +14,8 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useNavigate } from 'react-router-dom';
 import Share from '../share/share';
+import { api } from '../../../api/api';
+import { Alert, Snackbar } from '@mui/material';
 
 const MidwifeRegister = () => {
     const navigate = useNavigate();
@@ -21,13 +23,51 @@ const MidwifeRegister = () => {
     const [fullName, setFullName] = useState('');
     const [mohDivision, setMohDivision] = useState('');
     const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
 
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleClickShowConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
+
+    const handleRegister = async () => {
+        if (!fullName || !mohDivision || !phone || !email || !password || !regNumber) {
+            setSnackbar({ open: true, message: 'Please fill in all required fields.', severity: 'error' });
+            return;
+        }
+        if (password !== confirmPassword) {
+            setSnackbar({ open: true, message: 'Passwords do not match', severity: 'error' });
+            return;
+        }
+
+        const nameParts = fullName.trim().split(' ');
+        const firstname = nameParts[0] || '';
+        const lastname = nameParts.slice(1).join(' ') || '';
+
+        setLoading(true);
+        try {
+            await api.post('/auth/register', {
+                firstname,
+                lastname,
+                email,
+                phone,
+                password,
+                role: 'MIDWIFE',
+                regNumber,
+                mohDivision
+            });
+            setSnackbar({ open: true, message: 'Registration successful! Redirecting to login...', severity: 'success' });
+            setTimeout(() => navigate('/login'), 2000);
+        } catch (error) {
+            setSnackbar({ open: true, message: error.message || 'Registration failed', severity: 'error' });
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <Box
@@ -141,24 +181,48 @@ const MidwifeRegister = () => {
                                 />
                             </Box>
 
-                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
+                            <Box sx={{ maxWidth: '462px', mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>MOH Division</Typography>
                                 <FormControl fullWidth size="small">
                                     <Select
                                         value={mohDivision}
                                         onChange={(e) => setMohDivision(e.target.value)}
                                         displayEmpty
+                                        MenuProps={{
+                                            PaperProps: {
+                                                sx: {
+                                                    maxHeight: 410,
+                                                    width: 462,
+                                                    '& .MuiMenuItem-root': {
+                                                        fontFamily: "'Poppins', sans-serif",
+                                                        fontSize: '14px',
+                                                        py: 1
+                                                    }
+                                                }
+                                            }
+                                        }}
                                         sx={{
                                             borderRadius: '8px',
                                             bgcolor: '#FFFFFF',
-                                            fontFamily: "'Poppins', sans-serif"
+                                            fontFamily: "'Poppins', sans-serif",
+                                            '& .MuiSelect-select': {
+                                                py: '10px'
+                                            }
                                         }}
                                     >
                                         <MenuItem value="" disabled>
                                             <span style={{ color: '#9CA3AF', fontFamily: "'Poppins', sans-serif" }}>Select MOH Division</span>
                                         </MenuItem>
-                                        <MenuItem value="division1" sx={{ fontFamily: "'Poppins', sans-serif" }}>Colombo</MenuItem>
-                                        <MenuItem value="division2" sx={{ fontFamily: "'Poppins', sans-serif" }}>Kandy</MenuItem>
+                                        <MenuItem value="homagama">Homagama</MenuItem>
+                                        <MenuItem value="pitipana">Pitipana</MenuItem>
+                                        <MenuItem value="habarakada">Habarakada</MenuItem>
+                                        <MenuItem value="meegoda">Meegoda</MenuItem>
+                                        <MenuItem value="atigala">Atigala</MenuItem>
+                                        <MenuItem value="jalthara">Jalthara</MenuItem>
+                                        <MenuItem value="wataraka">Wataraka</MenuItem>
+                                        <MenuItem value="owitigama">Owitigama</MenuItem>
+                                        <MenuItem value="godagama">Godagama</MenuItem>
+                                        <MenuItem value="henawaththa">Henawaththa</MenuItem>
                                     </Select>
                                 </FormControl>
                             </Box>
@@ -170,6 +234,25 @@ const MidwifeRegister = () => {
                                     size="small"
                                     value={phone}
                                     onChange={(e) => setPhone(e.target.value)}
+                                    sx={{
+                                        '& .MuiOutlinedInput-root': {
+                                            borderRadius: '8px',
+                                            bgcolor: '#FFFFFF',
+                                            fontFamily: "'Poppins', sans-serif"
+                                        }
+                                    }}
+                                />
+                            </Box>
+
+                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
+                                <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>Email</Typography>
+                                <TextField
+                                    fullWidth
+                                    size="small"
+                                    type="email"
+                                    required
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '8px',
@@ -276,7 +359,8 @@ const MidwifeRegister = () => {
                             <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
                                 <Button
                                     variant="contained"
-                                    onClick={() => { }}
+                                    onClick={handleRegister}
+                                    disabled={loading}
                                     fullWidth
                                     sx={{
                                         height: '46px',
@@ -293,7 +377,7 @@ const MidwifeRegister = () => {
                                         fontFamily: "'Poppins', sans-serif"
                                     }}
                                 >
-                                    Register
+                                    {loading ? 'Registering...' : 'Register'}
                                 </Button>
                             </Box>
                         </Box>
@@ -301,6 +385,16 @@ const MidwifeRegister = () => {
                     </Box>
                 </Box>
             </Box>
+            <Snackbar
+                open={snackbar.open}
+                autoHideDuration={6000}
+                onClose={() => setSnackbar({ ...snackbar, open: false })}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            >
+                <Alert onClose={() => setSnackbar({ ...snackbar, open: false })} severity={snackbar.severity} sx={{ width: '100%' }}>
+                    {snackbar.message}
+                </Alert>
+            </Snackbar>
         </Box>
     );
 };

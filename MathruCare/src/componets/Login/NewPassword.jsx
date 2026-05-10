@@ -5,25 +5,56 @@ import {
     TextField,
     Button,
     IconButton,
-    InputAdornment
+    InputAdornment,
+    Snackbar,
+    Alert
 } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-
 import { useNavigate } from 'react-router-dom';
-
-// Asset imports
 import logoImg from '../../assets/SignIn/logo.webp';
+import { api } from '../../api/api';
 
 const NewPassword = () => {
     const navigate = useNavigate();
+    const identifier = sessionStorage.getItem('reset_identifier') || '';
+    const otp = sessionStorage.getItem('reset_otp') || '';
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
 
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleClickShowConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
+
+    const handleReset = async () => {
+        if (!password || !confirmPassword) {
+            setSnackbar({ open: true, message: 'Please fill in all fields', severity: 'error' });
+            return;
+        }
+        if (password !== confirmPassword) {
+            setSnackbar({ open: true, message: 'Passwords do not match', severity: 'error' });
+            return;
+        }
+        if (password.length < 6) {
+            setSnackbar({ open: true, message: 'Password must be at least 6 characters', severity: 'error' });
+            return;
+        }
+        setLoading(true);
+        try {
+            await api.post('/auth/reset-password', { identifier, otp, newPassword: password });
+            sessionStorage.removeItem('reset_identifier');
+            sessionStorage.removeItem('reset_otp');
+            setSnackbar({ open: true, message: 'Password reset successful! Redirecting to login...', severity: 'success' });
+            setTimeout(() => navigate('/login'), 2000);
+        } catch (err) {
+            setSnackbar({ open: true, message: err.message || 'Reset failed. Try again.', severity: 'error' });
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <Box
@@ -247,7 +278,8 @@ const NewPassword = () => {
                 <Button
                     variant="contained"
                     fullWidth
-                    onClick={() => navigate('/login')}
+                    disabled={loading}
+                    onClick={handleReset}
                     sx={{
                         height: { xs: 44, md: 48 },
                         borderRadius: '12px',
@@ -262,9 +294,15 @@ const NewPassword = () => {
                         }
                     }}
                 >
-                    Reset Password
+                    {loading ? 'Resetting...' : 'Reset Password'}
                 </Button>
             </Box>
+
+            <Snackbar open={snackbar.open} autoHideDuration={4000} onClose={() => setSnackbar({ ...snackbar, open: false })} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+                <Alert severity={snackbar.severity} onClose={() => setSnackbar({ ...snackbar, open: false })} sx={{ width: '100%', fontFamily: "'Poppins', sans-serif" }}>
+                    {snackbar.message}
+                </Alert>
+            </Snackbar>
         </Box>
     );
 };

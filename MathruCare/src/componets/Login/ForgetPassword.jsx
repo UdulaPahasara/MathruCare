@@ -4,17 +4,37 @@ import {
     Typography,
     TextField,
     Button,
-    Paper
+    Snackbar,
+    Alert
 } from '@mui/material';
 
 import { useNavigate } from 'react-router-dom';
-
-// Asset imports
 import logoImg from '../../assets/SignIn/logo.webp';
+import { api } from '../../api/api';
 
 const ForgetPassword = () => {
     const navigate = useNavigate();
-    const [email, setEmail] = useState('');
+    const [identifier, setIdentifier] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
+
+    const handleSendCode = async () => {
+        if (!identifier) {
+            setSnackbar({ open: true, message: 'Please enter your email address', severity: 'error' });
+            return;
+        }
+        setLoading(true);
+        try {
+            await api.post('/auth/forgot-password', { identifier });
+            sessionStorage.setItem('reset_identifier', identifier);
+            setSnackbar({ open: true, message: 'Code sent to your email!', severity: 'success' });
+            setTimeout(() => navigate('/verification-code'), 1500);
+        } catch (err) {
+            setSnackbar({ open: true, message: err.message || 'Failed to send code. Please try again.', severity: 'error' });
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <Box
@@ -125,7 +145,7 @@ const ForgetPassword = () => {
                         fontFamily: "'Poppins', sans-serif"
                     }}
                 >
-                    We need your registration phone number to send you password reset code!
+                    We need your registration email address to send you password reset code!
                 </Typography>
 
                 <Box
@@ -145,8 +165,8 @@ const ForgetPassword = () => {
                         size="small"
                         variant="outlined"
                         placeholder="Email address"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={identifier}
+                        onChange={(e) => setIdentifier(e.target.value)}
                         sx={{
                             '& .MuiOutlinedInput-root': {
                                 borderRadius: '10px',
@@ -163,7 +183,8 @@ const ForgetPassword = () => {
                 <Button
                     variant="contained"
                     fullWidth
-                    onClick={() => navigate('/verification-code')}
+                    disabled={loading}
+                    onClick={handleSendCode}
                     sx={{
                         height: { xs: 44, md: 48 },
                         borderRadius: '12px',
@@ -178,9 +199,20 @@ const ForgetPassword = () => {
                         }
                     }}
                 >
-                    Send Code
+                    {loading ? 'Sending...' : 'Send Code'}
                 </Button>
             </Box>
+
+            <Snackbar
+                open={snackbar.open}
+                autoHideDuration={4000}
+                onClose={() => setSnackbar({ ...snackbar, open: false })}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            >
+                <Alert severity={snackbar.severity} onClose={() => setSnackbar({ ...snackbar, open: false })} sx={{ width: '100%', fontFamily: "'Poppins', sans-serif" }}>
+                    {snackbar.message}
+                </Alert>
+            </Snackbar>
         </Box>
     );
 };

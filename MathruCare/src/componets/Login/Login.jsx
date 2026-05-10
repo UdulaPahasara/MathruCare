@@ -9,11 +9,14 @@ import {
     ToggleButton,
     ToggleButtonGroup,
     Link,
-    Paper
+    Paper,
+    Snackbar,
+    Alert
 } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useNavigate } from 'react-router-dom';
+import { api } from '../../api/api';
 
 // Asset imports
 import logoImg from '../../assets/SignIn/logo.webp';
@@ -28,6 +31,11 @@ const Login = () => {
     const [registrationNumber, setRegistrationNumber] = useState('');
     const [password, setPassword] = useState('');
 
+    // Feedback states
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState(false);
+
     const handleRoleChange = (event, newRole) => {
         if (newRole !== null) {
             setRole(newRole);
@@ -35,6 +43,38 @@ const Login = () => {
     };
 
     const handleClickShowPassword = () => setShowPassword(!showPassword);
+
+    const handleLogin = async (e) => {
+        if (e) e.preventDefault();
+        setLoading(true);
+        setError('');
+
+        try {
+            // For mother: registrationNumber is their phone number (stored as username in _user)
+            // For midwife/admin: registrationNumber is their email
+            const data = await api.post('/auth/authenticate', {
+                email: registrationNumber,
+                password: password
+            });
+
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('role', role);
+            setSuccess(true);
+
+            // Redirect after a short delay to show the success message
+            setTimeout(() => {
+                if (role === 'admin') navigate('/admin-dashboard');
+                else if (role === 'midwife') navigate('/midwife-dashboard');
+                else navigate('/dashboard');
+            }, 1500);
+        } catch (err) {
+            setError(err.message || 'Login failed. Please check your credentials.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleCloseSuccess = () => setSuccess(false);
 
     // Icon style as requested: 24x24, 0deg rotation, opacity 1
     const iconStyle = {
@@ -291,9 +331,17 @@ const Login = () => {
                         Forget your password?
                     </Link>
 
+                    {error && (
+                        <Typography sx={{ color: 'red', fontSize: '12px', textAlign: 'center', mb: 1, fontFamily: "'Poppins', sans-serif" }}>
+                            {error}
+                        </Typography>
+                    )}
+
                     <Button
                         variant="contained"
                         fullWidth
+                        onClick={handleLogin}
+                        disabled={loading}
                         sx={{
                             height: { xs: 42, md: 44, lg: 48 },
                             borderRadius: '12px',
@@ -306,7 +354,7 @@ const Login = () => {
                             '&:hover': { bgcolor: '#43A047' }
                         }}
                     >
-                        Sign in
+                        {loading ? 'Signing in...' : 'Sign in'}
                     </Button>
 
                     <Typography
@@ -343,10 +391,20 @@ const Login = () => {
                     </Typography>
                 </Box>
             </Paper>
+
+            {/* Success Popup */}
+            <Snackbar
+                open={success}
+                autoHideDuration={2000}
+                onClose={handleCloseSuccess}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            >
+                <Alert onClose={handleCloseSuccess} severity="success" sx={{ width: '100%', fontFamily: "'Poppins', sans-serif" }}>
+                    Login Successful! Redirecting...
+                </Alert>
+            </Snackbar>
         </Box>
     );
 };
 
 export default Login;
-
-

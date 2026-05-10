@@ -119,24 +119,48 @@ const Register = () => {
                                 />
                             </Box>
 
-                            <Box sx={{ maxWidth: { lg: '70%' }, mx: 'auto', width: '100%' }}>
+                            <Box sx={{ maxWidth: '462px', mx: 'auto', width: '100%' }}>
                                 <Typography sx={{ mb: 0.5, fontSize: '14px', color: '#1A1A1A', fontWeight: 500, ml: '10px', fontFamily: "'Poppins', sans-serif" }}>MOH Division</Typography>
                                 <FormControl fullWidth size="small">
                                     <Select
                                         value={mohDivision}
                                         onChange={(e) => setMohDivision(e.target.value)}
                                         displayEmpty
+                                        MenuProps={{
+                                            PaperProps: {
+                                                sx: {
+                                                    maxHeight: 410,
+                                                    width: 462,
+                                                    '& .MuiMenuItem-root': {
+                                                        fontFamily: "'Poppins', sans-serif",
+                                                        fontSize: '14px',
+                                                        py: 1
+                                                    }
+                                                }
+                                            }
+                                        }}
                                         sx={{
                                             borderRadius: '8px',
                                             bgcolor: '#FFFFFF',
-                                            fontFamily: "'Poppins', sans-serif"
+                                            fontFamily: "'Poppins', sans-serif",
+                                            '& .MuiSelect-select': {
+                                                py: '10px'
+                                            }
                                         }}
                                     >
                                         <MenuItem value="" disabled>
                                             <span style={{ color: '#9CA3AF', fontFamily: "'Poppins', sans-serif" }}>Select MOH Division</span>
                                         </MenuItem>
-                                        <MenuItem value="division1" sx={{ fontFamily: "'Poppins', sans-serif" }}>Colombo</MenuItem>
-                                        <MenuItem value="division2" sx={{ fontFamily: "'Poppins', sans-serif" }}>Kandy</MenuItem>
+                                        <MenuItem value="homagama">Homagama</MenuItem>
+                                        <MenuItem value="pitipana">Pitipana</MenuItem>
+                                        <MenuItem value="habarakada">Habarakada</MenuItem>
+                                        <MenuItem value="meegoda">Meegoda</MenuItem>
+                                        <MenuItem value="atigala">Atigala</MenuItem>
+                                        <MenuItem value="jalthara">Jalthara</MenuItem>
+                                        <MenuItem value="wataraka">Wataraka</MenuItem>
+                                        <MenuItem value="owitigama">Owitigama</MenuItem>
+                                        <MenuItem value="godagama">Godagama</MenuItem>
+                                        <MenuItem value="henawaththa">Henawaththa</MenuItem>
                                     </Select>
                                 </FormControl>
                             </Box>
@@ -164,7 +188,7 @@ const Register = () => {
                                     fullWidth
                                     size="small"
                                     type="email"
-                                    placeholder="Optional"
+                                    required
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     sx={{
@@ -275,7 +299,29 @@ const Register = () => {
 
                                 <Button
                                     variant="contained"
-                                    onClick={() => navigate('/register-next')}
+                                    onClick={() => {
+                                        if (!fullName || !mohDivision || !phone || !email) {
+                                            alert('Please fill in all required fields (Name, MOH Division, Phone, and Email).');
+                                            return;
+                                        }
+                                        const nameParts = fullName.trim().split(' ');
+                                        const firstname = nameParts[0] || '';
+                                        const lastname = nameParts.slice(1).join(' ') || '';
+
+                                        localStorage.setItem('reg_step1', JSON.stringify({
+                                            firstname,
+                                            lastname,
+                                            mohDivision,
+                                            phone,
+                                            email,
+                                            lmpDate,
+                                            height: height ? parseFloat(height) : null,
+                                            weight: weight ? parseFloat(weight) : null,
+                                            hasDiabetes,
+                                            role: 'MOTHER'
+                                        }));
+                                        navigate('/register-next');
+                                    }}
                                     sx={{
                                         width: '120px',
                                         height: '46px',

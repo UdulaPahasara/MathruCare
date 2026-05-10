@@ -1,45 +1,81 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import {
     Box,
     Typography,
-    TextField,
     Button,
-    Paper,
-    Link
+    Snackbar,
+    Alert
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-
-// Asset imports
 import logoImg from '../../assets/SignIn/logo.webp';
+import { api } from '../../api/api';
 
 const VerificationCode = () => {
     const navigate = useNavigate();
-    const [code, setCode] = useState(['', '', '', '']);
-    const inputRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
+    const identifier = sessionStorage.getItem('reset_identifier') || '';
+
+    const [digits, setDigits] = useState(['', '', '', '']);
+    const [loading, setLoading] = useState(false);
+    const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
+    const inputRefs = useRef([]);
 
     const handleChange = (index, value) => {
-        if (!/^\d*$/.test(value)) return; // Only numbers
-
-        const newCode = [...code];
-        newCode[index] = value.slice(-1); // Only take last char
-        setCode(newCode);
-
-        // Auto focus next
+        if (!/^\d?$/.test(value)) return;
+        const newDigits = [...digits];
+        newDigits[index] = value;
+        setDigits(newDigits);
         if (value && index < 3) {
-            inputRefs[index + 1].current.focus();
+            inputRefs.current[index + 1]?.focus();
         }
     };
 
     const handleKeyDown = (index, e) => {
-        if (e.key === 'Backspace' && !code[index] && index > 0) {
-            inputRefs[index - 1].current.focus();
+        if (e.key === 'Backspace' && !digits[index] && index > 0) {
+            inputRefs.current[index - 1]?.focus();
+        }
+    };
+
+    const handlePaste = (e) => {
+        const paste = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 4);
+        if (paste.length === 4) {
+            setDigits(paste.split(''));
+            inputRefs.current[3]?.focus();
+        }
+        e.preventDefault();
+    };
+
+    const handleVerify = async () => {
+        const otp = digits.join('');
+        if (otp.length < 4) {
+            setSnackbar({ open: true, message: 'Please enter the 4-digit code', severity: 'error' });
+            return;
+        }
+        setLoading(true);
+        try {
+            // Store OTP for the next step (NewPassword screen)
+            sessionStorage.setItem('reset_otp', otp);
+            setSnackbar({ open: true, message: 'Code verified! Set your new password.', severity: 'success' });
+            setTimeout(() => navigate('/new-password'), 1000);
+        } catch (err) {
+            setSnackbar({ open: true, message: err.message || 'Verification failed. Please try again.', severity: 'error' });
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleResend = async () => {
+        try {
+            await api.post('/auth/forgot-password', { identifier });
+            setSnackbar({ open: true, message: 'Code resent!', severity: 'success' });
+        } catch (err) {
+            setSnackbar({ open: true, message: err.message || 'Failed to resend code.', severity: 'error' });
         }
     };
 
     return (
         <Box
             sx={{
-                height: '100vh',
+                minHeight: '100vh',
                 width: '100%',
                 bgcolor: '#EDFFF1',
                 display: 'flex',
@@ -53,154 +89,83 @@ const VerificationCode = () => {
                 overflowY: 'auto'
             }}
         >
-            {/* Header Section - Matches Login/ForgetPassword for Consistency */}
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    mb: { xs: 1.5, md: 2, lg: 3 },
-                    mt: { xs: 1, md: 0 }
-                }}
-            >
-                <Box
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: { xs: 1, md: 1.5, lg: 2 },
-                        mb: 0.5
-                    }}
-                >
-                    <Box
-                        component="img"
-                        src={logoImg}
-                        alt="MathruCare Logo"
-                        sx={{ width: { xs: 32, md: 48, lg: 60 }, height: 'auto' }}
-                    />
-                    <Typography
-                        variant="h2"
-                        sx={{
-                            fontWeight: 700,
-                            color: '#1a1a1a',
-                            fontSize: { xs: '24px', md: '36px', lg: '42px' },
-                            fontFamily: "'Poppins', sans-serif"
-                        }}
-                    >
+            {/* Header */}
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: { xs: 1.5, md: 2, lg: 3 }, mt: { xs: 1, md: 0 } }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, md: 1.5, lg: 2 }, mb: 0.5 }}>
+                    <Box component="img" src={logoImg} alt="MathruCare Logo" sx={{ width: { xs: 32, md: 48, lg: 60 }, height: 'auto' }} />
+                    <Typography variant="h2" sx={{ fontWeight: 700, color: '#1a1a1a', fontSize: { xs: '24px', md: '36px', lg: '42px' }, fontFamily: "'Poppins', sans-serif" }}>
                         MathruCare
                     </Typography>
                 </Box>
-                <Typography
-                    variant="subtitle1"
-                    sx={{
-                        color: '#4a4a4a',
-                        fontSize: { xs: '11px', md: '14px', lg: '16px' },
-                        fontWeight: 400,
-                        textAlign: 'center',
-                        fontFamily: "'Poppins', sans-serif"
-                    }}
-                >
+                <Typography variant="subtitle1" sx={{ color: '#4a4a4a', fontSize: { xs: '11px', md: '14px', lg: '16px' }, fontWeight: 400, textAlign: 'center', fontFamily: "'Poppins', sans-serif" }}>
                     Supporting maternal health with trusted digital care
                 </Typography>
             </Box>
 
-            {/* Verification Box */}
+            {/* Card */}
             <Box
                 sx={{
                     width: '100%',
-                    maxWidth: { xs: '80%', sm: '80%', md: 600 },
+                    maxWidth: { xs: '80%', sm: '80%', md: 500 },
                     borderRadius: '20px',
                     border: '1.5px solid transparent',
                     background: 'linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(180deg, #3DC664 0%, #219140 100%) border-box',
-                    p: { xs: '16px 20px', md: '24px 40px', lg: '30px 50px' },
+                    p: { xs: '24px 20px', md: '36px 44px' },
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '10px',
+                    gap: '16px',
                     mb: { xs: 2, md: 0 }
                 }}
             >
-                <Typography
-                    variant="h4"
-                    sx={{
-                        fontWeight: 700,
-                        color: '#1a1a1a',
-                        fontSize: { xs: '24px', md: '36px' },
-                        mb: 1,
-                        textAlign: 'center',
-                        fontFamily: "'Poppins', sans-serif"
-                    }}
-                >
+                <Typography variant="h4" sx={{ fontWeight: 700, color: '#1a1a1a', fontSize: { xs: '22px', md: '30px' }, textAlign: 'center', fontFamily: "'Poppins', sans-serif" }}>
                     Verification Code
                 </Typography>
 
-                <Typography
-                    variant="body2"
-                    sx={{
-                        color: '#4a4a4a',
-                        textAlign: 'center',
-                        fontSize: { xs: '13px', md: '14px' },
-                        mb: 3,
-                        lineHeight: 1.5,
-                        fontWeight: 500,
-                        fontFamily: "'Poppins', sans-serif"
-                    }}
-                >
+                <Typography variant="body2" sx={{ color: '#4a4a4a', textAlign: 'center', fontSize: { xs: '12px', md: '13px' }, fontFamily: "'Poppins', sans-serif" }}>
                     Please enter the 4 digit code sent to your email.
                 </Typography>
 
-                {/* 4-Digit Input Section */}
-                <Box
-                    sx={{
-                        display: 'flex',
-                        gap: { xs: 1.5, md: 2 },
-                        mb: 3,
-                        width: '100%',
-                        justifyContent: 'center'
-                    }}
-                >
-                    {code.map((digit, index) => (
-                        <TextField
+                {/* OTP Boxes */}
+                <Box sx={{ display: 'flex', gap: { xs: '8px', md: '12px' }, justifyContent: 'center', my: 1 }} onPaste={handlePaste}>
+                    {digits.map((digit, index) => (
+                        <Box
                             key={index}
-                            inputRef={inputRefs[index]}
+                            component="input"
+                            ref={el => inputRefs.current[index] = el}
+                            type="text"
+                            inputMode="numeric"
+                            maxLength={1}
                             value={digit}
-                            onChange={(e) => handleChange(index, e.target.value)}
-                            onKeyDown={(e) => handleKeyDown(index, e)}
-                            variant="outlined"
-                            autoComplete="off"
+                            onChange={e => handleChange(index, e.target.value)}
+                            onKeyDown={e => handleKeyDown(index, e)}
                             sx={{
-                                width: { xs: 50, md: 60 },
-                                '& .MuiOutlinedInput-root': {
-                                    height: { xs: 50, md: 60 },
-                                    borderRadius: '12px',
-                                    fontSize: '20px',
-                                    fontWeight: 700,
-                                    bgcolor: '#FFFFFF',
-                                    fontFamily: "'Poppins', sans-serif",
-                                    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.05)',
-                                    '& fieldset': {
-                                        borderColor: '#D1D5DB',
-                                        borderWidth: '1.5px'
-                                    },
-                                    '&:hover fieldset': {
-                                        borderColor: '#4CAF50',
-                                        borderWidth: '2px'
-                                    },
-                                    '&.Mui-focused fieldset': {
-                                        borderColor: '#4CAF50',
-                                        borderWidth: '2px'
-                                    },
-                                    '& input': { textAlign: 'center', p: 0 }
-                                }
+                                width: { xs: '44px', md: '54px' },
+                                height: { xs: '44px', md: '54px' },
+                                border: '1.5px solid',
+                                borderColor: digit ? '#3DC664' : '#D1D5DB',
+                                borderRadius: '10px',
+                                textAlign: 'center',
+                                fontSize: { xs: '20px', md: '24px' },
+                                fontWeight: 600,
+                                outline: 'none',
+                                fontFamily: "'Poppins', sans-serif",
+                                color: '#1a1a1a',
+                                bgcolor: '#fff',
+                                cursor: 'text',
+                                transition: 'border-color 0.2s',
+                                '&:focus': { borderColor: '#219140', boxShadow: '0 0 0 2px rgba(61,198,100,0.15)' }
                             }}
                         />
                     ))}
                 </Box>
 
+                {/* Verify Button */}
                 <Button
                     variant="contained"
                     fullWidth
-                    onClick={() => navigate('/new-password')}
+                    disabled={loading}
+                    onClick={handleVerify}
                     sx={{
                         height: { xs: 44, md: 48 },
                         borderRadius: '12px',
@@ -208,42 +173,31 @@ const VerificationCode = () => {
                         textTransform: 'none',
                         fontSize: '16px',
                         fontWeight: 700,
-                        mb: 3,
                         fontFamily: "'Poppins', sans-serif",
-                        '&:hover': {
-                            opacity: 0.9,
-                            background: 'linear-gradient(180deg, #35b058 0%, #1e8038 100%)'
-                        }
+                        '&:hover': { opacity: 0.9, background: 'linear-gradient(180deg, #35b058 0%, #1e8038 100%)' }
                     }}
                 >
-                    Verify
+                    {loading ? 'Verifying...' : 'Verify'}
                 </Button>
 
-                <Typography
-                    variant="body2"
-                    sx={{
-                        color: '#666',
-                        fontSize: '13px',
-                        fontWeight: 500,
-                        fontFamily: "'Poppins', sans-serif"
-                    }}
-                >
+                {/* Resend */}
+                <Typography sx={{ textAlign: 'center', fontSize: '13px', color: '#555', fontFamily: "'Poppins', sans-serif" }}>
                     Didn't get the code?{' '}
-                    <Link
-                        component="button"
-                        onClick={() => { }}
-                        sx={{
-                            color: '#1a1a1a',
-                            fontWeight: 700,
-                            textDecoration: 'none',
-                            fontFamily: "'Poppins', sans-serif",
-                            '&:hover': { textDecoration: 'underline' }
-                        }}
+                    <Box
+                        component="span"
+                        onClick={handleResend}
+                        sx={{ fontWeight: 700, color: '#219140', cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}
                     >
                         Resend Code
-                    </Link>
+                    </Box>
                 </Typography>
             </Box>
+
+            <Snackbar open={snackbar.open} autoHideDuration={4000} onClose={() => setSnackbar({ ...snackbar, open: false })} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+                <Alert severity={snackbar.severity} onClose={() => setSnackbar({ ...snackbar, open: false })} sx={{ width: '100%', fontFamily: "'Poppins', sans-serif" }}>
+                    {snackbar.message}
+                </Alert>
+            </Snackbar>
         </Box>
     );
 };
