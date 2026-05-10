@@ -46,6 +46,17 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         if (e) e.preventDefault();
+
+        // For mother role, registrationNumber is the phone number.
+        // Validate it has exactly 10 digits.
+        if (role === 'mother') {
+            const phoneDigits = registrationNumber.replace(/\D/g, '');
+            if (phoneDigits.length !== 10) {
+                setError('Phone number (Registration Number) must be exactly 10 digits.');
+                return;
+            }
+        }
+
         setLoading(true);
         setError('');
 

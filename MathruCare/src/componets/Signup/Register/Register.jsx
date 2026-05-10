@@ -304,6 +304,14 @@ const Register = () => {
                                             alert('Please fill in all required fields (Name, MOH Division, Phone, and Email).');
                                             return;
                                         }
+
+                                        // Validate phone number: must be exactly 10 digits
+                                        const phoneDigits = phone.replace(/\D/g, '');
+                                        if (phoneDigits.length !== 10) {
+                                            alert('Phone number must be exactly 10 digits.');
+                                            return;
+                                        }
+
                                         const nameParts = fullName.trim().split(' ');
                                         const firstname = nameParts[0] || '';
                                         const lastname = nameParts.slice(1).join(' ') || '';
@@ -312,7 +320,7 @@ const Register = () => {
                                             firstname,
                                             lastname,
                                             mohDivision,
-                                            phone,
+                                            phone: phoneDigits,
                                             email,
                                             lmpDate,
                                             height: height ? parseFloat(height) : null,

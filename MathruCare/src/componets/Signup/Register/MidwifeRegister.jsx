@@ -44,6 +44,13 @@ const MidwifeRegister = () => {
             return;
         }
 
+        // Validate phone number: must be exactly 10 digits
+        const phoneDigits = phone.replace(/\D/g, '');
+        if (phoneDigits.length !== 10) {
+            setSnackbar({ open: true, message: 'Phone number must be exactly 10 digits.', severity: 'error' });
+            return;
+        }
+
         const nameParts = fullName.trim().split(' ');
         const firstname = nameParts[0] || '';
         const lastname = nameParts.slice(1).join(' ') || '';
