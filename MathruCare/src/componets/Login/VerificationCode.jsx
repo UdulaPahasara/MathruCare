@@ -52,12 +52,15 @@ const VerificationCode = () => {
         }
         setLoading(true);
         try {
-            // Store OTP for the next step (NewPassword screen)
+            // Call backend to verify the code
+            await api.post('/auth/verify-otp', { identifier, otp });
+
+            // Store OTP for the next step (NewPassword screen) if verified
             sessionStorage.setItem('reset_otp', otp);
             setSnackbar({ open: true, message: 'Code verified! Set your new password.', severity: 'success' });
             setTimeout(() => navigate('/new-password'), 1000);
         } catch (err) {
-            setSnackbar({ open: true, message: err.message || 'Verification failed. Please try again.', severity: 'error' });
+            setSnackbar({ open: true, message: err.response?.data?.message || err.message || 'Verification failed. Please try again.', severity: 'error' });
         } finally {
             setLoading(false);
         }

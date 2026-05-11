@@ -99,6 +99,25 @@ public class PasswordResetService {
     }
 
     /**
+     * Verify the OTP without marking it as used.
+     */
+    @Transactional(readOnly = true)
+    public void verifyOtp(String email, String otp) {
+        PasswordResetToken token = tokenRepository.findByToken(otp)
+                .orElseThrow(() -> new RuntimeException("Invalid reset code"));
+
+        if (!token.getEmail().equals(email)) {
+            throw new RuntimeException("Invalid reset code");
+        }
+        if (token.isUsed()) {
+            throw new RuntimeException("Reset code has already been used");
+        }
+        if (LocalDateTime.now().isAfter(token.getExpiryTime())) {
+            throw new RuntimeException("Reset code has expired. Please request a new one.");
+        }
+    }
+
+    /**
      * Verify the OTP and reset the password.
      */
     @Transactional

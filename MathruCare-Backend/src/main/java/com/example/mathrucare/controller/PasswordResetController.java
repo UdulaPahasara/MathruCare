@@ -27,6 +27,18 @@ public class PasswordResetController {
     }
 
     /**
+     * Step 1.5: Verify OTP
+     * Body: { "identifier": "user@gmail.com", "otp": "1234" }
+     */
+    @PostMapping("/verify-otp")
+    public ResponseEntity<Map<String, String>> verifyOtp(@RequestBody Map<String, String> body) {
+        String identifier = body.get("identifier");
+        String otp = body.get("otp");
+        passwordResetService.verifyOtp(identifier, otp);
+        return ResponseEntity.ok(Map.of("message", "Code verified successfully"));
+    }
+
+    /**
      * Step 2: Verify OTP + Reset Password
      * Body: { "identifier": "0771234567", "otp": "123456", "newPassword":
      * "NewPass@123" }
