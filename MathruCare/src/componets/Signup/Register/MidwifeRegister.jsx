@@ -79,7 +79,7 @@ const MidwifeRegister = () => {
                 mohDivision
             });
             setSnackbar({ open: true, message: 'Registration successful! Redirecting to login...', severity: 'success' });
-            setTimeout(() => navigate('/login'), 2000);
+            setTimeout(() => navigate('/login', { state: { role: 'midwife' } }), 2000);
         } catch (error) {
             setSnackbar({ open: true, message: error.message || 'Registration failed', severity: 'error' });
         } finally {

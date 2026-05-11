@@ -15,7 +15,7 @@ import {
 } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { api } from '../../api/api';
 
 // Asset imports
@@ -26,7 +26,8 @@ import adminIcon from '../../assets/SignIn/admin.webp';
 
 const Login = () => {
     const navigate = useNavigate();
-    const [role, setRole] = useState('mother');
+    const location = useLocation();
+    const [role, setRole] = useState(location.state?.role || 'mother');
     const [showPassword, setShowPassword] = useState(false);
     const [registrationNumber, setRegistrationNumber] = useState('');
     const [password, setPassword] = useState('');
