@@ -10,6 +10,9 @@ import RegisterNext from './componets/Signup/Register/RegisterNext';
 import MidwifeRegister from './componets/Signup/Register/MidwifeRegister';
 import AdminSignup from './componets/Signup/Admin/AdminSignup';
 import ScrollToTop from './componets/Common/ScrollToTop';
+import MomHome from './componets/Home/MomHome/MomeHome';
+import AdminHome from './componets/Home/AdminHome/AdminHome';
+import MidwifeHome from './componets/Home/MidwifeHome/MidwifeHome';
 import './App.css';
 
 const theme = createTheme({
@@ -34,6 +37,9 @@ function App() {
         <Route path="/register-next" element={<RegisterNext />} />
         <Route path="/midwife-register" element={<MidwifeRegister />} />
         <Route path="/admin-signup" element={<AdminSignup />} />
+        <Route path="/dashboard" element={<MomHome />} />
+        <Route path="/admin-dashboard" element={<AdminHome />} />
+        <Route path="/midwife-dashboard" element={<MidwifeHome />} />
         <Route path="/" element={<Navigate to="/login" replace />} />
         {/* Add more routes here as needed */}
       </Routes>
